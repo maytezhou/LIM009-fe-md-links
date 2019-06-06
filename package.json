@@ -1,0 +1,29 @@
+{
+    "name": "lim009-fe-md-links",
+    "version": "1.0.0",
+    "description": "## Preámbulo",
+    "main": "cli.js",
+    "scripts": {
+        "test": "jest --coverage"
+    },
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/maytezhou/LIM009-fe-md-links.git"
+    },
+    "author": "",
+    "license": "ISC",
+    "bin": {
+        "md-links": "cli.js",
+        "md-links2": "index.js"
+    },
+    "bugs": {
+        "url": "https://github.com/maytezhou/LIM009-fe-md-links/issues"
+    },
+    "homepage": "https://github.com/maytezhou/LIM009-fe-md-links#readme",
+    "devDependencies": {
+        "babel-install": "2.1.0"
+    },
+    "dependencies": {
+        "jest": "^24.8.0"
+    }
+}
