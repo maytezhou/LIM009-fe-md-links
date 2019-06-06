@@ -1,5 +1,4 @@
-import { checkToSeeIfPathisAbsolute, convertToAboslutePath, checkToSeeIfPathIsFile, checkToSeeIfPathIsDirectory } from '../LIM009-fe-md-links/node.js'
-
+import { checkToSeeIfPathisAbsolute, convertToAboslutePath, checkToSeeIfPathIsFile, checkToSeeIfPathIsDirectory } from '../node.js'
 
 describe('checkToSeeIfPathisAbsolute', () => {
     it('debería ser una función', () => {
@@ -7,12 +6,12 @@ describe('checkToSeeIfPathisAbsolute', () => {
     });
     it('Debería retornar false  si la ruta es relativa', () => {
 
-        expect(checkToSeeIfPathisAbsolute('.\practicando\style.css')).toEqual(false);
+        expect(checkToSeeIfPathisAbsolute('../../../Documents/ARCHIVOS/lucero.md')).toEqual(false);
 
     });
     it('Debería retornar true si la ruta es absoluta', () => {
-
-        expect(checkToSeeIfPathisAbsolute('\practicando\style.css')).toEqual(true);
+        /*'C:\\Users\\MayteZhou\\Documents\\ARCHIVOS\\lucero.md'*/
+        expect(checkToSeeIfPathisAbsolute('/home/maytezhou/Documents/ARCHIVOS')).toEqual(true);
 
     });
 });
@@ -23,8 +22,9 @@ describe('convertToAboslutePath', () => {
         expect(typeof convertToAboslutePath).toBe('function');
     });
     it('Debería poder convetir la ruta relativa a ruta absoluta', () => {
-
-        expect(convertToAbsolutePath('../LIM009-fe-md-links/index.spec.js')).toEqual('C:\Users\MayteZhou\Desktop\MD-LINKS\LIM009-fe-md-links\index.spec.js');
+        /* '..//..//..//Documents//ARCHIVOS//lucero.md'*/
+        /* 'C:\\Users\\MayteZhou\\Documents\\ARCHIVOS\\lucero.md'*/
+        expect(convertToAboslutePath('../../../Documents/ARCHIVOS/lucero.md')).toEqual('/home/maytezhou/Documents/ARCHIVOS/lucero.md');
 
     });
 });
@@ -34,8 +34,8 @@ describe('checkToSeeIfPathIsFile', () => {
         expect(typeof checkToSeeIfPathIsFile).toBe('function');
     });
     it('Debería  retornar true si  la ruta  es un archivo', () => {
-
-        expect(checkToSeeIfPathIsFile('C:\Users\MayteZhou\Desktop\MD-LINKS\LIM009-fe-md-links\index.spec.js')).toEqual(true);
+        /* 'C:\\Users\\MayteZhou\\Documents\\ARCHIVOS\\lucero.md'*/
+        expect(checkToSeeIfPathIsFile('/home/maytezhou/Documents/ARCHIVOS/lucero.md')).toEqual(true);
 
     });
 });
@@ -45,8 +45,8 @@ describe('checkToSeeIfPathIsDirectory', () => {
         expect(typeof checkToSeeIfPathIsDirectory).toBe('function');
     });
     it('Debería  retornar true si  la ruta  es una carpeta', () => {
-
-        expect(checkToSeeIfPathIsDirectory('C:\Users\MayteZhou\Desktop\MD-LINKS\LIM009-fe-md-links')).toEqual(true);
+        /* 'C:\\Users\\MayteZhou\\Documents\\ARCHIVOS'*/
+        expect(checkToSeeIfPathIsDirectory('/home/maytezhou/Documents/ARCHIVOS')).toEqual(true);
 
     });
 });

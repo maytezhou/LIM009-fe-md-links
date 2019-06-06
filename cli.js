@@ -8,6 +8,7 @@ console.log(args);*/
 const path = require('path');
 const fs = require('fs');
 
+
 //console.log(__dirname);
 //console.log(__filename);
 
@@ -22,66 +23,52 @@ command.forEach(element => {
 });
 
 const userCommand = command[2];
-//console.log(userCommand);
-//console.log(path1);
 
+console.log('Before reading file or directory');
 const checkIfItsFileOrDir = (path1) => {
-    //  console.log(path1)
+
     const arrOfMdFiles = [];
-    /* if(fs.existsSync(path1)){*/
-    if (fs.statSync(path1).isFile() === true) {
+    if (fs.existsSync(path1)) {
+        if (fs.statSync(path1).isFile() === true) {
 
-        console.log('Es un file')
-        if (path.extname(path1) === ".md") {
+            // console.log('Es un file')
+            if (path.extname(path1) === ".md") {
 
-            arrOfMdFiles.push(path1);
-            console.log(arrOfMdFiles);
-            return arrOfMdFiles;
+                arrOfMdFiles.push(path1);
+                // console.log(arrOfMdFiles);
+                const pathOfAfile = path1;
+
+                const contentOfAFile = fs.readFile(pathOfAfile, 'utf8', (error, data) => {
+                    console.log(data)
+                });
+                return contentOfAFile;
+            }
+        } else if (fs.statSync(path1).isDirectory() === true) {
+            console.log(path1);
+            console.log('Es un directorio')
+            const arrOfthingsInsideDir = fs.readdir(path1, 'utf8', (err, files) => {
+                console.log(files)
+            });
+            // console.log(arrOfthingsInsideDir);
+            return arrOfthingsInsideDir;
         }
-    } else if (fs.statSync(path1).isDirectory() === true) {
-
-        console.log('Es un directorio')
-        const arrOfthingsInsideDir = fs.readdirSync(path1);
-        console.log(arrOfthingsInsideDir);
-        return arrOfthingsInsideDir;
+    } else {
+        console.log("Esta ruta no existe");
     }
 
-
-    /* }else{
-         console.log("Esta ruta no existe");
-     }*/
-
 };
+console.log('After reading file or directory probably');
 const mdLinks = (path2) => {
     if (path.isAbsolute(path2) === false) { // si es relativa
-        console.log("Es relativa");
+        console.log('Es una ruta relativa');
         console.log(path2)
-            // si la ruta relativa es  la ruta de un archivo 
-        const obj = path.parse(path2);
-        console.log(obj);
-        if (obj.ext !== '') { // si la ruta relativa es un archivo 
-            console.log('Es una ruta relativa de un archivo');
-            const file = obj.base;
-            console.log(file);
-            console.log(path.resolve(file)) // que lo convierta a absoluta
-                //   /home/maytezhou/Desktop/MD-LINKS/LIM009-fe-md-links + el archivo que pasa el usuario
-                // une la ruta de la carpeta padre donde se encuentra el archivo actual + el archivo que pasa el usuario
-
-            return path.resolve(file)
-        } else { // si la ruta absoluta es la ruta de una carpeta  ,si obj.ext =""
-            console.log('Es una ruta relativa de un directorio')
-            console.log(path.resolve(path2)); // que lo convierta a absoluta
-            // une la ruta de la carpeta  padre donde se encuentra el archivo actual mas el path que pasa el usuario
-            // /home/maytezhou/Desktop/MD-LINKS/LIM009-fe-md-links + la ruta completa de la carpeta que pasa el usuario
-            return path.resolve(path2);
-
-        }
+        console.log(path.resolve(path2)); // que lo convierta a absoluta
+        return path.resolve(path2);
 
 
 
     } else if (path.isAbsolute(path2) === true) { //sino que retorne absoluta
-        console.log("Es absoluta");
-
+        console.log('Es una ruta Absoluta');
         console.log(path2);
         return path2;
 
@@ -89,13 +76,4 @@ const mdLinks = (path2) => {
     }
 
 };
-//checkIfItsFileOrDir(mdLinks(userCommand));
-mdLinks(userCommand);
-/*
-console.log('aaaaaaaaaaaaa')
-console.log(__dirname);
-const rutaDelaCarpetaDelArchivoActual = __dirname;
-const obj2 = path.parse(rutaDelaCarpetaDelArchivoActual);
-console.log(obj2);
-
-console.log(__filename);*/
+checkIfItsFileOrDir(mdLinks(userCommand));

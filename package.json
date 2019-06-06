@@ -13,8 +13,8 @@
     "author": "",
     "license": "ISC",
     "bin": {
-        "md-links": "cli.js",
-        "md-links2": "index.js"
+        "md-links": "cli.js"
+
     },
     "bugs": {
         "url": "https://github.com/maytezhou/LIM009-fe-md-links/issues"
