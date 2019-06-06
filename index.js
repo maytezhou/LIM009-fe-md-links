@@ -55,7 +55,7 @@ const checkIfItsFileOrDir = (path1) => {
 
 const mdLinks = (path2) => {
     if (path.isAbsolute(path2) === false) { // si es relativa
-        console.log("Es relativa");
+        console.log("Es una ruta relativa");
         console.log(path.resolve(path2)); // que lo convierta a absoluta
         // une la ruta de la carpeta  padre donde se encuentra el archivo actual mas el path que pasa el usuario
         // /home/maytezhou/Desktop/MD-LINKS/LIM009-fe-md-links + la ruta completa de la carpeta que pasa el usuario
@@ -63,7 +63,7 @@ const mdLinks = (path2) => {
 
 
     } else if (path.isAbsolute(path2) === true) { //sino que retorne absoluta
-        console.log("Es absoluta");
+        console.log("Es  una ruta absoluta");
 
         console.log(path2);
         return path2;
@@ -73,7 +73,7 @@ const mdLinks = (path2) => {
 
 };
 //checkIfItsFileOrDir(mdLinks(userCommand));
-mdLinks(userCommand);
+checkIfItsFileOrDir(mdLinks(userCommand));
 /*
 console.log('aaaaaaaaaaaaa')
 console.log(__dirname);
