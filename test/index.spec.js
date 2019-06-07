@@ -6,7 +6,7 @@ describe('checkToSeeIfPathisAbsolute', () => {
     });
     it('Debería retornar false  si la ruta es relativa', () => {
 
-        expect(checkToSeeIfPathisAbsolute('../../../Documents/ARCHIVOS/lucero.md')).toEqual(false);
+        expect(checkToSeeIfPathisAbsolute('../../../../Documents/ARCHIVOS/lucero.md')).toEqual(false);
 
     });
     it('Debería retornar true si la ruta es absoluta', () => {
@@ -24,7 +24,7 @@ describe('convertToAboslutePath', () => {
     it('Debería poder convetir la ruta relativa a ruta absoluta', () => {
         /* '..//..//..//Documents//ARCHIVOS//lucero.md'*/
         /* 'C:\\Users\\MayteZhou\\Documents\\ARCHIVOS\\lucero.md'*/
-        expect(convertToAboslutePath('../../../Documents/ARCHIVOS/lucero.md')).toEqual('/home/maytezhou/Documents/ARCHIVOS/lucero.md');
+        expect(convertToAboslutePath('../../../../maytezhou/Documents/ARCHIVOS/lucero.md')).toEqual('/home/maytezhou/Documents/ARCHIVOS/lucero.md');
 
     });
 });

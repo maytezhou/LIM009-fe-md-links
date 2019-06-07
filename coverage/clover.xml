@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<coverage generated="1559852366526" clover="3.2.0">
-  <project timestamp="1559852366526" name="All files">
+<coverage generated="1559860608633" clover="3.2.0">
+  <project timestamp="1559860608634" name="All files">
     <metrics statements="11" coveredstatements="11" conditionals="0" coveredconditionals="0" methods="4" coveredmethods="4" elements="15" coveredelements="15" complexity="0" loc="11" ncloc="11" packages="1" files="1" classes="1"/>
     <file name="node.js" path="/home/maytezhou/Desktop/MD-LINKS/LIM009-fe-md-links/node.js">
       <metrics statements="11" coveredstatements="11" conditionals="0" coveredconditionals="0" methods="4" coveredmethods="4"/>
