@@ -1,68 +1,27 @@
 #!/usr/bin/env node
 
-const util = require('util');
+
 const fs = require('fs');
 const path = require('path');
 
-const gettingFsStatObject = (path) => {
-    const stat = util.promisify(fs.stat);
-    return stat(path)
+export const gettingFsStatObject = (path) => {
+    const stat = fs.statSync(path);
+    return stat;
 };
-// gettingFsStatObject('../../../../Documents/ARCHIVOS/lucero.md');
+// gettingFsStatObject('../archivos/lucero.md');
+//console.log(gettingFsStatObject('../archivos/lucero.md'));
 
-const readFile = (path) => {
-    const promiseForReadingFile = util.promisify(fs.readFile);
-    return promiseForReadingFile(path, 'utf8')
+export const readFile = (path) => {
+    const fileContent = fs.readFileSync(path, 'utf8')
+    return fileContent;
 };
-//readFile('../../../../Documents/ARCHIVOS/lucero.md');
-const readDir = (path) => {
-    const promiseForReadingDir = util.promisify(fs.readdir);
-    return promiseForReadingDir(path)
+console.log(readFile('../archivos/lucero.md'));
+
+export const readDir = (path) => {
+    const arrOfFilesOrDirs = fs.readdirSync(path, 'utf8');
+    return arrOfFilesOrDirs;
 };
-//readDir('../../../../Documents/ARCHIVOS/');
-
-//fs.stat(path[, options], callback);
-const getArrOfMarkDowns = (path1) => {
-    return gettingFsStatObject(path1).then((statsObj) => {
-
-        if (statsObj.isFile() === true) {
-            if (path.extname(path1) === '.md') {
-                return readFile(path1);
-
-            }
-        } else if (statsObj.isDirectory() === true) {
-            return readDir(path1);
-
-        }
-    })
-
-
-};
-
-// Ruta relativa de una carpeta '../../../../Documents/ARCHIVOS';
-// Ruta relativa de un archivo '../../../../Documents/ARCHIVOS/lucero.md'
-
-getArrOfMarkDowns('./archivos/lucero.md');
-// Ruta relativa de una carpeta '../../../../Documents/ARCHIVOS'
-// Ruta relativa de un archivo '../../../../Documents/ARCHIVOS/lucero.md'
-/*
-const getArrMarkdowns = (path1) => {
-    const arrOfMdFiles = [];
-    if (fs.statSync(path1).isFile() === true) {
-        if (path.extname(path1) === ".md") {
-            arrOfMdFiles.push(path1);
-            const pathOfAfile = path1;
-
-            const contentOfAFile = fs.readFile(pathOfAfile, 'utf8', (error, data) => {
-                console.log(data)
-            });
-            return contentOfAFile;
-        }
-    } else if (fs.statSync(path1).isDirectory() === true) {
-        const arrOfthingsInsideDir = fs.readdir(path1, 'utf8', (err, files) => {
-            console.log(files)
-        });
-        // console.log(arrOfthingsInsideDir);
-        return arrOfthingsInsideDir;
-    }
-};*/
+//readDir('../archivos');
+console.log(readDir('../archivos'));
+// Ruta relativa de una carpeta '../archivos';
+// Ruta relativa de un archivo '../archivos/lucero.md';

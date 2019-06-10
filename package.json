@@ -4,7 +4,8 @@
     "description": "## Preámbulo",
     "main": "cli.js",
     "scripts": {
-        "test": "jest --coverage"
+        "test": "jest --coverage",
+        "build": "babel src -d lib"
     },
     "repository": {
         "type": "git",
@@ -13,13 +14,15 @@
     "author": "",
     "license": "ISC",
     "bin": {
-        "md-links": "cli.js"
+        "md-links": "./index.js"
     },
     "bugs": {
         "url": "https://github.com/maytezhou/LIM009-fe-md-links/issues"
     },
     "homepage": "https://github.com/maytezhou/LIM009-fe-md-links#readme",
     "devDependencies": {
+        "@babel/cli": "^7.4.4",
+        "@babel/core": "^7.4.5",
         "babel-install": "2.1.0"
     },
     "dependencies": {
