@@ -1,27 +1,22 @@
-#!/usr/bin/env node
 
-
-const fs = require('fs');
 const path = require('path');
+export const verifyingIfisAMarkdownFile = (absolutePath) => {
 
-export const gettingFsStatObject = (path) => {
-    const stat = fs.statSync(path);
-    return stat;
-};
-// gettingFsStatObject('../archivos/lucero.md');
-//console.log(gettingFsStatObject('../archivos/lucero.md'));
+    if (path.extname(absolutePath) === '.md') {
+        return absolutePath;
+    }
 
-export const readFile = (path) => {
-    const fileContent = fs.readFileSync(path, 'utf8')
-    return fileContent;
 };
-//console.log(readFile('../archivos/lucero.md'));
+export const gettingAbsolutePath = (path1) => {
+    if (path.isAbsolute(path1) === false) { // si es relativa
+        //console.log('Es una ruta relativa');
+        //console.log(path2)
 
-export const readDir = (path) => {
-    const arrOfFilesOrDirs = fs.readdirSync(path, 'utf8');
-    return arrOfFilesOrDirs;
-};
-//readDir('../archivos');
-//console.log(readDir('../archivos'));
-// Ruta relativa de una carpeta '../archivos';
-// Ruta relativa de un archivo '../archivos/lucero.md';
+        const absolutePath = path.resolve(path1); // que lo convierta a absoluta
+        return absolutePath;
+    } else if (path.isAbsolute(path1) === true) { //si es absoluta
+        //console.log('Es una ruta Absoluta');
+        //console.log(path2);
+        return path1
+    };
+}

@@ -1,51 +1,81 @@
 #!/usr/bin/env node
 
-const fs = require('fs');
-const path = require('path');
 
-import { readFile } from './path.js';
-import { readDir } from './path.js';
+import {
+    readFile
+} from './read-controller.js';
+import {
+    readDir
+} from './read-controller.js';
 
-import { gettingFsStatObject } from './path.js';
+import {
+    gettingFsStatObject
+} from './read-controller.js';
+import {
+    verifyingIfisAMarkdownFile
+} from './path.js';
+import {
+    gettingAbsolutePath
+} from './path.js';
+
+
+
 const command = process.argv;
 const commandUser = command[2];
 //console.log(commandUser);
 
-const mdLinks = (path2) => {
-    if (path.isAbsolute(path2) === false) { // si es relativa
-        //console.log('Es una ruta relativa');
-        //console.log(path2)
 
-        const absolutePath = path.resolve(path2); // que lo convierta a absoluta
-        //console.log(absolutePath + 'ruta relativa convertida a absoluta');
-        if (gettingFsStatObject(absolutePath).isFile() === true) {
-            console.log('Es un archivo');
-            if (path.extname(absolutePath) === '.md') {
-                console.log("Es un archivo Markdown");
-                const fileContent = readFile(path2);
-                console.log(fileContent);
-                return fileContent;
-            }
-        } else if (gettingFsStatObject(absolutePath).isDirectory() === true) {
-            console.log('Es un directorio');
-            const arrOfFilesOrDirsInsideADir = readDir(absolutePath);
-            console.log(arrOfFilesOrDirsInsideADir);
-            return arrOfFilesOrDirsInsideADir;
-        }
+const gettingArrOfMarkdownFiles = (path2) => {
+    let arrOfMarkdownFilesPath = [];
+    const absolutePath = gettingAbsolutePath(path2);
+    if (gettingFsStatObject(absolutePath).isFile() === true) { // si es un archivo
+        // console.log('Es un archivo');
+        const markdownFilePath = verifyingIfisAMarkdownFile(absolutePath); //verificar que sea un archivo markdown
+        // console.log('Es un archivo markdown');
+        arrOfMarkdownFilesPath.push(markdownFilePath); //  guardar el archivo markdown
+    }
 
-
-
-    } else if (path.isAbsolute(path2) === true) { //si es absoluta
-        //console.log('Es una ruta Absoluta');
-        //console.log(path2);
-
-
+    if (gettingFsStatObject(absolutePath).isDirectory() === true) { // si es una carpeta 
+        //  console.log('Es un directorio');
+        const arrOfFilesOrDirsInsideADir = readDir(absolutePath); // que lea  la carpeta  
+        // console.log(arrOfFilesOrDirsInsideADir);
+        arrOfFilesOrDirsInsideADir.forEach((filesOrDirs) => { // que  obtenga los elementos de la carpeta 
+            const newPathAbsolute = absolutePath + '/' + filesOrDirs; // que  obtenga la ruta absoluta de cada uno de los elementos
+            let newArr = gettingArrOfMarkdownFiles(newPathAbsolute);
+           //   console.log(newArr);
+           arrOfMarkdownFilesPath = arrOfMarkdownFilesPath.concat(newArr)
+           
+        });
 
 
     }
+   console.log(arrOfMarkdownFilesPath);
+    return arrOfMarkdownFilesPath;
+
+
 
 };
-mdLinks(commandUser);
+gettingArrOfMarkdownFiles(commandUser);
 
+
+const gettingArrObjOfMdLinks= (arrPaths) =>{
+    let arrObj = [];
+    arrPaths.forEach((filePath)=> {
+        const markdownContent = readFile(filePath).toString();
+      //  console.log(markdownContent)
+     
+    const url= 'https?:\/\/(www\.)?[-a-zA-Z0-9@:%._\+~#=]{2,256}\.[a-z]{2,6}\b([-a-zA-Z0-9@:%_\+.~#?&//=]*)';
+        let a = markdownContent.search(url);
+       
+     })
+   
+};
+
+const mdLinks=(arrPaths)=> { 
+    arrPaths.forEach((filePath)=> {
+       let content=readFile(filePath);
+    })
+};
+gettingArrObjOfMdLinks(gettingArrOfMarkdownFiles(commandUser))
 // Ruta relativa de una carpeta '../archivos';
 // Ruta relativa de un archivo '../archivos/lucero.md';
