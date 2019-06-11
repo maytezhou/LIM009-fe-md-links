@@ -23,13 +23,9 @@ import {
 import {
     gettingAbsolutePath
 } from './path.js';
-
-
-
-const command = process.argv;
-const commandUser = command[2];
-//console.log(commandUser);
-
+import {
+    pathCommandUser
+} from './cli.js';
 
 const gettingArrOfMarkdownFiles = (path2) => {
     let arrOfMarkdownFilesPath = [];
@@ -40,7 +36,6 @@ const gettingArrOfMarkdownFiles = (path2) => {
         // console.log('Es un archivo markdown');
         arrOfMarkdownFilesPath.push(markdownFilePath); //  guardar el archivo markdown
     }
-
     if (gettingFsStatObject(absolutePath).isDirectory() === true) { // si es una carpeta 
         //  console.log('Es un directorio');
         const arrOfFilesOrDirsInsideADir = readDir(absolutePath); // que lea  la carpeta  
@@ -50,19 +45,11 @@ const gettingArrOfMarkdownFiles = (path2) => {
             let newArr = gettingArrOfMarkdownFiles(newPathAbsolute);
             //   console.log(newArr);
             arrOfMarkdownFilesPath = arrOfMarkdownFilesPath.concat(newArr)
-
         });
-
-
     }
     // console.log(arrOfMarkdownFilesPath);
     return arrOfMarkdownFilesPath;
-
-
-
 };
-
-
 
 const gettingArrObjOfMdLinks = (arrPaths) => {
     let arrObj = [];
@@ -71,9 +58,8 @@ const gettingArrObjOfMdLinks = (arrPaths) => {
         const markdownContent = readFile(filePath).toString();
         // console.log(markdownContent)
         var renderer = new myMarked.Renderer();
-
         renderer.link = (href, _, text) => {
-            arrObj.push({ href, text })
+            arrObj.push({ href, text, file: filePath })
 
         };
         myMarked(markdownContent, { renderer: renderer });
@@ -81,22 +67,30 @@ const gettingArrObjOfMdLinks = (arrPaths) => {
     return arrObj;
 };
 
-/*const mdLinks = (arrPaths) => {
-    arrPaths.forEach((filePath) => {
-        let content = readFile(filePath);
+const mdLinks = (arrObj) => {
+    arrObj.forEach((obj) => {
+
     })
-};*/
-console.log(gettingArrObjOfMdLinks(gettingArrOfMarkdownFiles(commandUser)));
+};
+//console.log(gettingArrObjOfMdLinks(gettingArrOfMarkdownFiles(pathCommandUser)));
 // Ruta relativa de una carpeta '../archivos';
 // Ruta relativa de un archivo '../archivos/lucero.md';
-/*const gettingStatsOfUrl = (arrArr) => {
-    arrArr.forEach((arr) => {
-        arr.forEach((obj) => {
-            obj.h
-        })
-        fetch(link).then((response) => {
-            console.log(response.status);
+// retorna un array de repuestas de la promesas
+const gettingStatsOfUrl = (arrObj) => {
+    // let contador = 0;
+    const newArrObj = arrObj.map((obj) => {
+        // contador++
+        return fetch(obj.href).then((response) => {
+            obj.status = response.status;
+            obj.ok = response.statusText;
+            console.log(obj);
+            return obj;
         })
 
     });
-};*/
+    // console.log(contador);
+    return Promise.all(newArrObj);
+};
+gettingStatsOfUrl(gettingArrObjOfMdLinks(gettingArrOfMarkdownFiles(pathCommandUser))).then((response) => {
+    console.log(response);
+})

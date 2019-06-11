@@ -5,10 +5,6 @@
 console.log(args);*/
 
 // Grab provided args 
-const path = require('path');
-const fs = require('fs');
-
-
 //console.log(__dirname);
 //console.log(__filename);
 
@@ -17,12 +13,13 @@ const fs = require('fs');
 //console.log(command[1]); // ruta relativa del archivo donde estoy
 //console.log(command[2]); // 1 er commando que ingresa la persona
 //console.log(command[3]); // 2 do commando que ingresa la persona
+const command = process.argv;
 
 
-export const userCommand = (command1) => {
+const userCommand = (command1) => {
     return command1[2];
 };
-
+export const pathCommandUser = userCommand(command);
 
 
 

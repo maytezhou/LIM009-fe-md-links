@@ -11,17 +11,17 @@ import {
 const gettingArrObjOfMdLinks = (arrPaths) => {
     let arrObj = [];
     arrPaths.forEach((filePath) => {
-        const markdownContent = readFile(filePath).toString();
-        console.log(markdownContent)
-        var renderer = new myMarked.Renderer();
+            const markdownContent = readFile(filePath).toString();
+            // console.log(markdownContent)
+            var renderer = new myMarked.Renderer();
 
-        renderer.link = (href, text) => {
-            arrObj.push({ href, text })
+            renderer.link = (href, _, text) => {
+                arrObj.push({ href, text })
 
-        };
-        myMarked(markdownContent, { renderer: renderer });
-        console.log(arrObj);
-        return arrObj;
-    })
+            };
+            myMarked(markdownContent, { renderer: renderer });
 
+        })
+        // console.log(arrObj);
+    return arrObj;
 };
