@@ -4,6 +4,7 @@ var myMarked = require('marked');
 
 // Get reference
 //var renderer = new myMarked.Renderer();
+const fetch = require('node-fetch');
 
 
 import {
@@ -60,7 +61,7 @@ const gettingArrOfMarkdownFiles = (path2) => {
 
 
 };
-gettingArrOfMarkdownFiles(commandUser);
+
 
 
 const gettingArrObjOfMdLinks = (arrPaths) => {
@@ -71,22 +72,31 @@ const gettingArrObjOfMdLinks = (arrPaths) => {
         // console.log(markdownContent)
         var renderer = new myMarked.Renderer();
 
-        renderer.link = (href, stats, text) => {
-            arrObj.push({ href, stats, text })
+        renderer.link = (href, _, text) => {
+            arrObj.push({ href, text })
 
         };
         myMarked(markdownContent, { renderer: renderer });
-        console.log(arrObj);
-        return arrObj;
     })
-
+    return arrObj;
 };
 
-const mdLinks = (arrPaths) => {
+/*const mdLinks = (arrPaths) => {
     arrPaths.forEach((filePath) => {
         let content = readFile(filePath);
     })
-};
-gettingArrObjOfMdLinks(gettingArrOfMarkdownFiles(commandUser));
+};*/
+console.log(gettingArrObjOfMdLinks(gettingArrOfMarkdownFiles(commandUser)));
 // Ruta relativa de una carpeta '../archivos';
 // Ruta relativa de un archivo '../archivos/lucero.md';
+/*const gettingStatsOfUrl = (arrArr) => {
+    arrArr.forEach((arr) => {
+        arr.forEach((obj) => {
+            obj.h
+        })
+        fetch(link).then((response) => {
+            console.log(response.status);
+        })
+
+    });
+};*/
