@@ -39,7 +39,7 @@ export const gettingArrOfMarkdownFiles = (path2) => {
     if (gettingFsStatObject(absolutePath).isDirectory() === true) { // si es una carpeta 
         //  console.log('Es un directorio');
         const arrOfFilesOrDirsInsideADir = readDir(absolutePath); // que lea  la carpeta  
-        // console.log(arrOfFilesOrDirsInsideADir);
+        //console.log(arrOfFilesOrDirsInsideADir);
         arrOfFilesOrDirsInsideADir.forEach((filesOrDirs) => { // que  obtenga los elementos de la carpeta 
             const newPathAbsolute = absolutePath + '/' + filesOrDirs; // que  obtenga la ruta absoluta de cada uno de los elementos
             let newArr = gettingArrOfMarkdownFiles(newPathAbsolute);
@@ -55,15 +55,16 @@ export const gettingArrObjOfMdLinks = (arrPaths) => {
     let arrObj = [];
     // console.log(arrPaths);
     arrPaths.forEach((filePath) => {
-        const markdownContent = readFile(filePath).toString();
-        // console.log(markdownContent)
-        var renderer = new myMarked.Renderer();
-        renderer.link = (href, _, text) => {
-            arrObj.push({ href, text, file: filePath })
+            const markdownContent = readFile(filePath).toString();
+            // console.log(markdownContent)
+            var renderer = new myMarked.Renderer();
+            renderer.link = (href, _, text) => {
+                arrObj.push({ href, text, file: filePath })
 
-        };
-        myMarked(markdownContent, { renderer: renderer });
-    })
+            };
+            myMarked(markdownContent, { renderer: renderer });
+        })
+        // console.log(arrObj);
     return arrObj;
 };
 
@@ -83,7 +84,7 @@ export const gettingStatsOfUrl = (arrObj) => {
         return fetch(obj.href).then((response) => {
             obj.status = response.status;
             obj.ok = response.statusText;
-            console.log(obj);
+            // console.log(obj);
             return obj;
         })
 
@@ -91,7 +92,7 @@ export const gettingStatsOfUrl = (arrObj) => {
     // console.log(contador);
     return Promise.all(newArrObj);
 };
-gettingStatsOfUrl(gettingArrObjOfMdLinks(gettingArrOfMarkdownFiles(pathCommandUser))).then((response) => {
-    console.log(response);
+/*gettingStatsOfUrl(gettingArrObjOfMdLinks(gettingArrOfMarkdownFiles(pathCommandUser))).then((response) => {
+    // console.log(response);
 
-})
+})*/

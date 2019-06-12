@@ -1,4 +1,5 @@
 #!/usr/bin/env node
+
 const fs = require('fs');
 
 
@@ -13,7 +14,7 @@ export const readFile = (path) => {
     const fileContent = fs.readFileSync(path, 'utf8')
     return fileContent;
 };
-//console.log(readFile('../archivos/lucero.md'));
+//console.log(readFile('../archivos/hola.md'));
 
 export const readDir = (path) => {
     const arrOfFilesOrDirs = fs.readdirSync(path, 'utf8');

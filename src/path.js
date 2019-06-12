@@ -1,9 +1,8 @@
-
 const path = require('path');
 export const verifyingIfisAMarkdownFile = (absolutePath) => {
 
     if (path.extname(absolutePath) === '.md') {
-        return absolutePath;
+        return absolutePath; // return true
     }
 
 };
