@@ -27,7 +27,7 @@ import {
     pathCommandUser
 } from './cli.js';
 
-const gettingArrOfMarkdownFiles = (path2) => {
+export const gettingArrOfMarkdownFiles = (path2) => {
     let arrOfMarkdownFilesPath = [];
     const absolutePath = gettingAbsolutePath(path2);
     if (gettingFsStatObject(absolutePath).isFile() === true) { // si es un archivo
@@ -51,7 +51,7 @@ const gettingArrOfMarkdownFiles = (path2) => {
     return arrOfMarkdownFilesPath;
 };
 
-const gettingArrObjOfMdLinks = (arrPaths) => {
+export const gettingArrObjOfMdLinks = (arrPaths) => {
     let arrObj = [];
     // console.log(arrPaths);
     arrPaths.forEach((filePath) => {
@@ -76,7 +76,7 @@ const mdLinks = (arrObj) => {
 // Ruta relativa de una carpeta '../archivos';
 // Ruta relativa de un archivo '../archivos/lucero.md';
 // retorna un array de repuestas de la promesas
-const gettingStatsOfUrl = (arrObj) => {
+export const gettingStatsOfUrl = (arrObj) => {
     // let contador = 0;
     const newArrObj = arrObj.map((obj) => {
         // contador++
@@ -93,4 +93,5 @@ const gettingStatsOfUrl = (arrObj) => {
 };
 gettingStatsOfUrl(gettingArrObjOfMdLinks(gettingArrOfMarkdownFiles(pathCommandUser))).then((response) => {
     console.log(response);
+
 })

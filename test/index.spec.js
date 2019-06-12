@@ -1,30 +1,30 @@
-import { checkToSeeIfPathisAbsolute, convertToAboslutePath, checkToSeeIfPathIsFile, checkToSeeIfPathIsDirectory } from '../node.js'
+import { verifyingIfisAMarkdownFile, gettingAbsolutePath } from '../src/path.js';
+import { gettingArrOfMarkdownFiles, gettingArrObjOfMdLinks, gettingStatsOfUrl } from '../src/index.js';
+import { userCommand } from '../src/cli.js';
+import { readDir, readFile, gettingFsStatObject } from '../src/read-controller.js';
 
-describe('checkToSeeIfPathisAbsolute', () => {
+
+describe('verifyingIfisAMarkdownFile', () => {
     it('debería ser una función', () => {
-        expect(typeof checkToSeeIfPathisAbsolute).toBe('function');
+        expect(typeof verifyingIfisAMarkdownFile).toBe('function');
     });
-    it('Debería retornar false  si la ruta es relativa', () => {
+    it('Debería retornar una ruta absoluta de un archivo markdown', () => {
 
-        expect(checkToSeeIfPathisAbsolute('../../../../Documents/ARCHIVOS/lucero.md')).toEqual(false);
-
-    });
-    it('Debería retornar true si la ruta es absoluta', () => {
-        /*'C:\\Users\\MayteZhou\\Documents\\ARCHIVOS\\lucero.md'*/
-        expect(checkToSeeIfPathisAbsolute('/home/maytezhou/Documents/ARCHIVOS')).toEqual(true);
+        expect(verifyingIfisAMarkdownFile('/home/maytezhou/Desktop/MD-LINKS/LIM009-fe-md-links/archivos/example/me.md')).toEqual('/home/maytezhou/Desktop/MD-LINKS/LIM009-fe-md-links/archivos/example/me.md');
 
     });
+
 });
 
 
-describe('convertToAboslutePath', () => {
+describe('gettingAbsolutePath', () => {
     it('debería ser una función', () => {
-        expect(typeof convertToAboslutePath).toBe('function');
+        expect(typeof gettingAbsolutePath).toBe('function');
     });
     it('Debería poder convetir la ruta relativa a ruta absoluta', () => {
         /* '..//..//..//Documents//ARCHIVOS//lucero.md'*/
         /* 'C:\\Users\\MayteZhou\\Documents\\ARCHIVOS\\lucero.md'*/
-        expect(convertToAboslutePath('../../../../maytezhou/Documents/ARCHIVOS/lucero.md')).toEqual('/home/maytezhou/Documents/ARCHIVOS/lucero.md');
+        expect(gettingAbsolutePath('../archivos/hola.md')).toEqual('/home/maytezhou/Desktop/MD-LINKS/LIM009-fe-md-links/archivos/hola.md');
 
     });
 });
