@@ -26,6 +26,13 @@ import {
 import {
     pathCommandUser
 } from './cli.js';
+import {
+    options1User
+} from './cli.js';
+import {
+    options2User
+} from './cli.js';
+
 
 export const gettingArrOfMarkdownFiles = (path2) => {
     let arrOfMarkdownFilesPath = [];
@@ -64,20 +71,16 @@ export const gettingArrObjOfMdLinks = (arrPaths) => {
             };
             myMarked(markdownContent, { renderer: renderer });
         })
-        // console.log(arrObj);
+        //console.log(arrObj);
     return arrObj;
 };
 
-const mdLinks = (arrObj) => {
-    arrObj.forEach((obj) => {
 
-    })
-};
 //console.log(gettingArrObjOfMdLinks(gettingArrOfMarkdownFiles(pathCommandUser)));
 // Ruta relativa de una carpeta '../archivos';
 // Ruta relativa de un archivo '../archivos/lucero.md';
 // retorna un array de repuestas de la promesas
-export const gettingStatsOfUrl = (arrObj) => {
+export const gettingStatsOfUrl = (arrObj, options) => {
     // let contador = 0;
     const newArrObj = arrObj.map((obj) => {
         // contador++
@@ -92,7 +95,24 @@ export const gettingStatsOfUrl = (arrObj) => {
     // console.log(contador);
     return Promise.all(newArrObj);
 };
-/*gettingStatsOfUrl(gettingArrObjOfMdLinks(gettingArrOfMarkdownFiles(pathCommandUser))).then((response) => {
-    // console.log(response);
 
-})*/
+
+export const mdLinks = (path, obj) => {
+    if (obj.validate == false) {
+        return new Promise((resolve, reject) => {
+            resolve(gettingArrObjOfMdLinks(gettingArrOfMarkdownFiles(path)));
+            reject('Something went wrong');
+        })
+
+    };
+    if (obj.validate == true) {
+        return new Promise((resolve, reject) => {
+            resolve(gettingStatsOfUrl(gettingArrObjOfMdLinks(gettingArrOfMarkdownFiles(path))));
+            reject('something went wrong');
+        })
+    }
+
+};
+//mdLinks(pathCommandUser);
+
+export const aaaa = 'aaaaa'

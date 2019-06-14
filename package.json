@@ -14,7 +14,7 @@
     "author": "",
     "license": "ISC",
     "bin": {
-        "md-links": "./lib/index.js"
+        "md-links": "./lib/cli.js"
     },
     "bugs": {
         "url": "https://github.com/maytezhou/LIM009-fe-md-links/issues"
@@ -23,12 +23,21 @@
     "devDependencies": {
         "@babel/cli": "^7.4.4",
         "@babel/core": "^7.4.5",
-        "babel-install": "2.1.0"
+        "babel-install": "2.1.0",
+        "@babel/node": "^7.4.5",
+        "@babel/preset-env": "^7.4.5",
+        "@types/node": "^12.0.6",
+        "eslint": "^5.16.0",
+        "jest": "^24.8.0"
     },
     "dependencies": {
         "@babel/plugin-transform-modules-commonjs": "^7.4.4",
+        "@babel/preset-env": "^7.4.5",
         "jest": "^24.8.0",
         "marked": "^0.6.2",
-        "node-fetch": "^2.6.0"
+        "node-fetch": "^2.6.0",
+        "markdown-link-check": "^3.7.3",
+        "markdown-link-extractor": "^1.2.1",
+        "remove-markdown": "^0.3.0"
     }
 }
