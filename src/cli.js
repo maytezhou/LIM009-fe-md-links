@@ -7,8 +7,11 @@ console.log(args);*/
 // Grab provided args 
 //console.log(__dirname);
 //console.log(__filename);
-import * as f from './index.js';
-console.log(require('./index.js'));
+import { mdLinks } from './index.js';
+import { gettingUniqueLinks } from './index.js';
+import { gettingBrokenLinks } from './index.js';
+import { gettingTotalLinks } from './index.js';
+
 
 //console.log(command);
 //console.log(command[1]); // ruta relativa del archivo donde estoy
@@ -51,14 +54,34 @@ const cli = (path, string1, string2) => {
         options.validate = true
         return mdLinks(path, options).then((response) => {
             console.log(response);
+            return response;
         });
 
     } else if (path !== undefined && string1 == undefined && string2 == undefined) {
         options.validate = false;
         return mdLinks(path, options).then((response) => {
             console.log(response);
+            return response;
         });
+    } else if (path !== undefined && string1 == '--stats' && string2 == undefined) {
+        options.validate = false;
+        return mdLinks(path, options).then((response) => {
+            response
+
+            console.log(`Total : ${gettingTotalLinks(response)} \n Unique: ${gettingUniqueLinks(response)}`);
+
+        })
+
+    } else if (path !== undefined && string1 == '--stats' && string2 == '--validate' ||
+        path !== undefined && string1 == '--validate' && string2 == '--stats'
+    ) {
+        options.validate = true;
+        return mdLinks(path, options).then((response) => {
+            response
+            console.log(`Total : ${gettingTotalLinks(response)} \n Unique: ${gettingUniqueLinks(response)} \n Broken: ${gettingBrokenLinks(response)} `);
+        })
+
     }
 
 };
-//cli(pathCommandUser, options1User, options2User);
+cli(pathCommandUser, options1User, options2User);
