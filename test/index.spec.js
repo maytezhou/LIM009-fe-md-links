@@ -1,5 +1,5 @@
 import { verifyingIfisAMarkdownFile, gettingAbsolutePath } from '../src/path.js';
-import { gettingArrOfMarkdownFiles, gettingArrObjOfMdLinks, gettingUniqueLinks, gettingBrokenLinks, gettingTotalLinks, gettingStatsOfUrl } from '../src/index.js';
+import { gettingArrOfMarkdownFiles, gettingArrObjOfMdLinks, gettingUniqueLinks, gettingBrokenLinks, gettingTotalLinks, gettingStatsOfUrl, mdLinks } from '../src/index.js';
 
 import { readDir, readFile } from '../src/read-controller.js';
 
@@ -444,6 +444,160 @@ describe('gettingBrokenLinks', () => {
     it('Debería  retornar  un numero que representa el total de links rotos (object.herf) dentro del array)', () => {
 
         expect(gettingBrokenLinks(arrObj3)).toEqual(2);
+
+    });
+});
+
+const output5 = [{
+        href: 'https://developer.mozilla.org/es/docs/CSS/Media_queries',
+        text: '<code>media queries</code>',
+        file: '/home/maytezhou/Desktop/MD-LINKS/LIM009-fe-md-links/archivos/example/lola/lulu/luz.md'
+    },
+    {
+        href: 'https://dzone.com/articles/how-single-page-web-applications-actually-work',
+        text: 'SPA',
+        file: '/home/maytezhou/Desktop/MD-LINKS/LIM009-fe-md-links/archivos/example/lola/susan.md'
+    },
+    {
+        href: 'https://dzone.com/articles/how-single-page-web-applications-actually-work',
+        text: 'versión traducida',
+        file: '/home/maytezhou/Desktop/MD-LINKS/LIM009-fe-md-links/archivos/example/lola/susan.md'
+    },
+    {
+        href: 'https://darwindigital.com/mobile-first-versus-responsive-web-design/',
+        text: 'mobile first',
+        file: '/home/maytezhou/Desktop/MD-LINKS/LIM009-fe-md-links/archivos/example/lola/susan.md'
+    },
+    {
+        href: 'https://translate.google.com/translate?hl=&sl=auto&tl=es&u=https%3A%2F%2Fdarwindigital.com%2Fmobile-first-versus-responsive-web-design',
+        text: 'versión traducida',
+        file: '/home/maytezhou/Desktop/MD-LINKS/LIM009-fe-md-links/archivos/example/lola/susan.md'
+    },
+    {
+        href: 'https://developer.mozilla.org/es/docs/Web/JavaScript/Referencia/Sentencias/import',
+        text: '<code>import</code>',
+        file: '/home/maytezhou/Desktop/MD-LINKS/LIM009-fe-md-links/archivos/example/lola/susan.md'
+    },
+    {
+        href: 'https://developer.mozilla.org/es/docs/Web/JavaScript/Referencia/Sentencias/export',
+        text: '<code>export</code>',
+        file: '/home/maytezhou/Desktop/MD-LINKS/LIM009-fe-md-links/archivos/example/lola/susan.md'
+    },
+    {
+        href: 'https://es.wikipedia.org/wiki/Modelo%E2%80%93vista%E2%80%93controlador',
+        text: 'MVC',
+        file: '/home/maytezhou/Desktop/MD-LINKS/LIM009-fe-md-links/archivos/example/lola/susan.md'
+    },
+    {
+        href: 'https://www.mediaclick.es/blog/diseno-web-responsive-design-y-la-importancia-del-mobile-first/',
+        text: '<em>mobile first</em>',
+        file: '/home/maytezhou/Desktop/MD-LINKS/LIM009-fe-md-links/archivos/example/lola/susan.md'
+    },
+    {
+        href: 'https://developer.mozilla.org/es/docs/DOM/Manipulando_el_historial_del_navegador',
+        text: 'manipulando el historial del\nnavegador',
+        file: '/home/maytezhou/Desktop/MD-LINKS/LIM009-fe-md-links/archivos/example/lola/susan.md'
+    },
+    {
+        href: 'https://developer.mozilla.org/es/docs/Web/API/Window/history',
+        text: '<code>window.history</code>',
+        file: '/home/maytezhou/Desktop/MD-LINKS/LIM009-fe-md-links/archivos/example/lola/susan.md'
+    },
+    {
+        href: 'https://firebase.google.com/',
+        text: 'Firebase',
+        file: '/home/maytezhou/Desktop/MD-LINKS/LIM009-fe-md-links/archivos/example/lola/susan.md'
+    },
+    {
+        href: 'https://firebase.google.com/docs/auth/',
+        text: '<code>Firebase authentication</code>',
+        file: '/home/maytezhou/Desktop/MD-LINKS/LIM009-fe-md-links/archivos/example/lola/susan.md'
+    },
+    {
+        href: 'https://firebase.google.com/docs/firestore/security/get-started',
+        text: '<code>Firestore security rules</code>',
+        file: '/home/maytezhou/Desktop/MD-LINKS/LIM009-fe-md-links/archivos/example/lola/susan.md'
+    },
+    {
+        href: 'https://css-tricks.com/snippets/css/a-guide-to-flexbox/',
+        text: '<code>flexbox</code>',
+        file: '/home/maytezhou/Desktop/MD-LINKS/LIM009-fe-md-links/archivos/example/lola/susan.md'
+    },
+    {
+        href: 'https://developer.mozilla.org/es/docs/CSS/Media_queries',
+        text: '<code>media queries</code>',
+        file: '/home/maytezhou/Desktop/MD-LINKS/LIM009-fe-md-links/archivos/example/lola/susan.md'
+    },
+    {
+        href: 'https://developer.mozilla.org/es/docs/Web/JavaScript/Referencia/Sentencias/export',
+        text: 'Modulos: Export',
+        file: '/home/maytezhou/Desktop/MD-LINKS/LIM009-fe-md-links/archivos/example/lola/susan.md'
+    },
+    {
+        href: 'https://developer.mozilla.org/es/docs/Web/JavaScript/Referencia/Sentencias/import',
+        text: 'Modulos: Import',
+        file: '/home/maytezhou/Desktop/MD-LINKS/LIM009-fe-md-links/archivos/example/lola/susan.md'
+    },
+    {
+        href: 'https://www.mediaclick.es/blog/diseno-web-responsive-design-y-la-importancia-del-mobile-first/',
+        text: 'Diseño web, responsive design y la importancia del mobile first - Media Click',
+        file: '/home/maytezhou/Desktop/MD-LINKS/LIM009-fe-md-links/archivos/example/lola/susan.md'
+    },
+    {
+        href: 'https://www.1and1.es/digitalguide/paginas-web/diseno-web/mobile-first-la-nueva-tendencia-del-diseno-web/',
+        text: 'Mobile First: el enfoque actual del diseño web móvil - 1and1',
+        file: '/home/maytezhou/Desktop/MD-LINKS/LIM009-fe-md-links/archivos/example/lola/susan.md'
+    },
+    {
+        href: 'https://desarrolloweb.com/articulos/mobile-first-responsive.html',
+        text: 'Mobile First - desarrolloweb.com',
+        file: '/home/maytezhou/Desktop/MD-LINKS/LIM009-fe-md-links/archivos/example/lola/susan.md'
+    },
+    {
+        href: 'https://zurb.com/word/mobile-first',
+        text: 'Mobile First - ZURB',
+        file: '/home/maytezhou/Desktop/MD-LINKS/LIM009-fe-md-links/archivos/example/lola/susan.md'
+    },
+    {
+        href: 'https://www.nngroup.com/articles/mobile-first-not-mobile-only/',
+        text: 'Mobile First Is NOT Mobile Only - Nielsen Norman Group',
+        file: '/home/maytezhou/Desktop/MD-LINKS/LIM009-fe-md-links/archivos/example/lola/susan.md'
+    },
+    {
+        href: 'https://developer.mozilla.org/es/docs/Web/JavaScript/Referencia/Sentencias/import',
+        text: '<code>import</code>',
+        file: '/home/maytezhou/Desktop/MD-LINKS/LIM009-fe-md-links/archivos/example/me.md'
+    },
+    {
+        href: 'https://developer.mozilla.org/es/docs/Web/JavaScript/Referencia/Sentencias/export',
+        text: '<code>export</code>',
+        file: '/home/maytezhou/Desktop/MD-LINKS/LIM009-fe-md-links/archivos/example/me.md'
+    },
+    {
+        href: 'https://es.wikipedia.org/wiki/Modelo%E2%80%93vista%E2%80%93controlador',
+        text: 'MVC',
+        file: '/home/maytezhou/Desktop/MD-LINKS/LIM009-fe-md-links/archivos/example/me.md'
+    },
+    {
+        href: 'https://developer.mozilla.org/es/docs/Web/JavaScript/Referencia/Sentencias/export',
+        text: 'Modulos: Export',
+        file: '/home/maytezhou/Desktop/MD-LINKS/LIM009-fe-md-links/archivos/hola.md'
+    },
+    {
+        href: 'http://yoursite.com/new-link-to-replace/',
+        text: 'Error: 404',
+        file: '/home/maytezhou/Desktop/MD-LINKS/LIM009-fe-md-links/archivos/lucero.md'
+    }
+]
+describe('mdLinks', () => {
+    it('debería ser una función', () => {
+        expect(typeof mdLinks).toBe('function');
+    });
+    it('Debería  retornar  una promesa que al resolverse retorna un array de objetos [{},{}])', () => {
+        return mdLinks('/home/maytezhou/Desktop/MD-LINKS/LIM009-fe-md-links/archivos', { validate: false }).then((response) => {
+            expect(response).toEqual(output5);
+        })
+
 
     });
 });
