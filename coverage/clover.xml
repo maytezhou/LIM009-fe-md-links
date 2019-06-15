@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<coverage generated="1560556791402" clover="3.2.0">
-  <project timestamp="1560556791403" name="All files">
-    <metrics statements="114" coveredstatements="82" conditionals="41" coveredconditionals="12" methods="33" coveredmethods="22" elements="188" coveredelements="116" complexity="0" loc="114" ncloc="114" packages="1" files="4" classes="4"/>
+<coverage generated="1560557211357" clover="3.2.0">
+  <project timestamp="1560557211357" name="All files">
+    <metrics statements="114" coveredstatements="85" conditionals="41" coveredconditionals="12" methods="33" coveredmethods="23" elements="188" coveredelements="120" complexity="0" loc="114" ncloc="114" packages="1" files="4" classes="4"/>
     <file name="cli.js" path="/home/maytezhou/Desktop/MD-LINKS/LIM009-fe-md-links/src/cli.js">
       <metrics statements="34" coveredstatements="12" conditionals="25" coveredconditionals="0" methods="10" coveredmethods="3"/>
       <line num="20" count="1" type="stmt"/>
@@ -40,7 +40,7 @@
       <line num="88" count="0" type="stmt"/>
     </file>
     <file name="index.js" path="/home/maytezhou/Desktop/MD-LINKS/LIM009-fe-md-links/src/index.js">
-      <metrics statements="60" coveredstatements="50" conditionals="10" coveredconditionals="8" methods="18" coveredmethods="14"/>
+      <metrics statements="60" coveredstatements="53" conditionals="10" coveredconditionals="8" methods="18" coveredmethods="15"/>
       <line num="3" count="1" type="stmt"/>
       <line num="7" count="1" type="stmt"/>
       <line num="37" count="1" type="stmt"/>
@@ -68,9 +68,9 @@
       <line num="84" count="1" type="stmt"/>
       <line num="86" count="1" type="stmt"/>
       <line num="88" count="8" type="stmt"/>
-      <line num="89" count="0" type="stmt"/>
-      <line num="90" count="0" type="stmt"/>
-      <line num="92" count="0" type="stmt"/>
+      <line num="89" count="8" type="stmt"/>
+      <line num="90" count="8" type="stmt"/>
+      <line num="92" count="8" type="stmt"/>
       <line num="97" count="1" type="stmt"/>
       <line num="101" count="1" type="stmt"/>
       <line num="102" count="0" type="cond" truecount="0" falsecount="2"/>

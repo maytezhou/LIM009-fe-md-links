@@ -304,7 +304,7 @@ describe('gettingStatsOfUrl', () => {
     });
     it('Debería  retornar  una promesa  que resuelve un array de objetos)', () => {
 
-        gettingStatsOfUrl(input4).then((response) => {
+        return gettingStatsOfUrl(input4).then((response) => {
             expect(response).toEqual(output4)
         })
 
