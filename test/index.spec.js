@@ -1,5 +1,5 @@
 import { verifyingIfisAMarkdownFile, gettingAbsolutePath } from '../src/path.js';
-import { gettingArrOfMarkdownFiles, gettingArrObjOfMdLinks } from '../src/index.js';
+import { gettingArrOfMarkdownFiles, gettingArrObjOfMdLinks, gettingUniqueLinks, gettingBrokenLinks, gettingTotalLinks, gettingStatsOfUrl } from '../src/index.js';
 
 import { readDir, readFile } from '../src/read-controller.js';
 
@@ -183,6 +183,11 @@ const arrObjOfMdLinks = [{
         href: 'https://developer.mozilla.org/es/docs/Web/JavaScript/Referencia/Sentencias/export',
         text: 'Modulos: Export',
         file: '/home/maytezhou/Desktop/MD-LINKS/LIM009-fe-md-links/archivos/hola.md'
+    },
+    {
+        href: 'http://yoursite.com/new-link-to-replace/',
+        text: 'Error: 404',
+        file: '/home/maytezhou/Desktop/MD-LINKS/LIM009-fe-md-links/archivos/lucero.md'
     }
 ];
 describe('gettingArrObjOfMdLinks', () => {
@@ -195,6 +200,119 @@ describe('gettingArrObjOfMdLinks', () => {
 
     });
 });
+const input4 = [{
+        href: 'https://desarrolloweb.com/articulos/mobile-first-responsive.html',
+        text: 'Mobile First - desarrolloweb.com',
+        file: '/home/maytezhou/Desktop/MD-LINKS/LIM009-fe-md-links/archivos/example/lola/susan.md'
+    },
+    {
+        href: 'https://zurb.com/word/mobile-first',
+        text: 'Mobile First - ZURB',
+        file: '/home/maytezhou/Desktop/MD-LINKS/LIM009-fe-md-links/archivos/example/lola/susan.md'
+    },
+    {
+        href: 'https://www.nngroup.com/articles/mobile-first-not-mobile-only/',
+        text: 'Mobile First Is NOT Mobile Only - Nielsen Norman Group',
+        file: '/home/maytezhou/Desktop/MD-LINKS/LIM009-fe-md-links/archivos/example/lola/susan.md'
+    },
+    {
+        href: 'https://developer.mozilla.org/es/docs/Web/JavaScript/Referencia/Sentencias/import',
+        text: '<code>import</code>',
+        file: '/home/maytezhou/Desktop/MD-LINKS/LIM009-fe-md-links/archivos/example/me.md'
+    },
+    {
+        href: 'https://developer.mozilla.org/es/docs/Web/JavaScript/Referencia/Sentencias/export',
+        text: '<code>export</code>',
+        file: '/home/maytezhou/Desktop/MD-LINKS/LIM009-fe-md-links/archivos/example/me.md'
+    },
+    {
+        href: 'https://es.wikipedia.org/wiki/Modelo%E2%80%93vista%E2%80%93controlador',
+        text: 'MVC',
+        file: '/home/maytezhou/Desktop/MD-LINKS/LIM009-fe-md-links/archivos/example/me.md'
+    },
+    {
+        href: 'https://developer.mozilla.org/es/docs/Web/JavaScript/Referencia/Sentencias/export',
+        text: 'Modulos: Export',
+        file: '/home/maytezhou/Desktop/MD-LINKS/LIM009-fe-md-links/archivos/hola.md'
+    },
+    {
+        href: 'http://yoursite.com/new-link-to-replace/',
+        text: 'Error: 404',
+        file: '/home/maytezhou/Desktop/MD-LINKS/LIM009-fe-md-links/archivos/lucero.md'
+    }
+]
+const output4 = [{
+        href: 'https://desarrolloweb.com/articulos/mobile-first-responsive.html',
+        text: 'Mobile First - desarrolloweb.com',
+        file: '/home/maytezhou/Desktop/MD-LINKS/LIM009-fe-md-links/archivos/example/lola/susan.md',
+        status: 200,
+        ok: 'OK'
+    },
+    {
+        href: 'https://zurb.com/word/mobile-first',
+        text: 'Mobile First - ZURB',
+        file: '/home/maytezhou/Desktop/MD-LINKS/LIM009-fe-md-links/archivos/example/lola/susan.md',
+        status: 200,
+        ok: 'OK'
+    },
+    {
+        href: 'https://www.nngroup.com/articles/mobile-first-not-mobile-only/',
+        text: 'Mobile First Is NOT Mobile Only - Nielsen Norman Group',
+        file: '/home/maytezhou/Desktop/MD-LINKS/LIM009-fe-md-links/archivos/example/lola/susan.md',
+        status: 200,
+        ok: 'OK'
+    },
+    {
+        href: 'https://developer.mozilla.org/es/docs/Web/JavaScript/Referencia/Sentencias/import',
+        text: '<code>import</code>',
+        file: '/home/maytezhou/Desktop/MD-LINKS/LIM009-fe-md-links/archivos/example/me.md',
+        status: 200,
+        ok: 'OK'
+    },
+    {
+        href: 'https://developer.mozilla.org/es/docs/Web/JavaScript/Referencia/Sentencias/export',
+        text: '<code>export</code>',
+        file: '/home/maytezhou/Desktop/MD-LINKS/LIM009-fe-md-links/archivos/example/me.md',
+        status: 200,
+        ok: 'OK'
+    },
+    {
+        href: 'https://es.wikipedia.org/wiki/Modelo%E2%80%93vista%E2%80%93controlador',
+        text: 'MVC',
+        file: '/home/maytezhou/Desktop/MD-LINKS/LIM009-fe-md-links/archivos/example/me.md',
+        status: 200,
+        ok: 'OK'
+    },
+    {
+        href: 'https://developer.mozilla.org/es/docs/Web/JavaScript/Referencia/Sentencias/export',
+        text: 'Modulos: Export',
+        file: '/home/maytezhou/Desktop/MD-LINKS/LIM009-fe-md-links/archivos/hola.md',
+        status: 200,
+        ok: 'OK'
+    },
+    {
+        href: 'http://yoursite.com/new-link-to-replace/',
+        text: 'Error: 404',
+        file: '/home/maytezhou/Desktop/MD-LINKS/LIM009-fe-md-links/archivos/lucero.md',
+        status: 404,
+        ok: 'Not Found'
+    }
+]
+describe('gettingStatsOfUrl', () => {
+    it('debería ser una función', () => {
+        expect(typeof gettingStatsOfUrl).toBe('function');
+    });
+    it('Debería  retornar  una promesa  que resuelve un array de objetos)', () => {
+
+        gettingStatsOfUrl(input4).then((response) => {
+            expect(response).toEqual(output4)
+        })
+
+    });
+});
+
+
+
 const output = ['example', 'hello.md', 'hola.md', 'lucero.md'];
 describe(' readDir', () => {
     it('debería ser una función', () => {
@@ -215,6 +333,117 @@ describe(' readFile', () => {
     it('Debería  retornar  un string con el contenido del file', () => {
 
         expect(readFile('/home/maytezhou/Desktop/MD-LINKS/LIM009-fe-md-links/archivos/hola.md')).toEqual(output2);
+
+    });
+});
+
+const arrObj3 = [{
+        href: 'https://developer.mozilla.org/es/docs/DOM/Manipulando_el_historial_del_navegador',
+        text: 'manipulando el historial del\nnavegador',
+        file: '/home/maytezhou/Desktop/MD-LINKS/LIM009-fe-md-links/archivos/example/lola/susan.md',
+        status: 200,
+        ok: 'OK'
+    },
+    {
+        href: 'https://developer.mozilla.org/es/docs/Web/API/Window/history',
+        text: '<code>window.history</code>',
+        file: '/home/maytezhou/Desktop/MD-LINKS/LIM009-fe-md-links/archivos/example/lola/susan.md',
+        status: 200,
+        ok: 'OK'
+    },
+    {
+        href: 'https://developer.mozilla.org/es/docs/Web/JavaScript/Referencia/Sentencias/export',
+        text: 'Modulos: Export',
+        file: '/home/maytezhou/Desktop/MD-LINKS/LIM009-fe-md-links/archivos/example/lola/susan.md',
+        status: 200,
+        ok: 'OK'
+    },
+    {
+        href: 'https://developer.mozilla.org/es/docs/Web/JavaScript/Referencia/Sentencias/import',
+        text: 'Modulos: Import',
+        file: '/home/maytezhou/Desktop/MD-LINKS/LIM009-fe-md-links/archivos/example/lola/susan.md',
+        status: 200,
+        ok: 'OK'
+    },
+    {
+        href: 'https://www.mediaclick.es/blog/diseno-web-responsive-design-y-la-importancia-del-mobile-first/',
+        text: 'Diseño web, responsive design y la importancia del mobile first - Media Click',
+        file: '/home/maytezhou/Desktop/MD-LINKS/LIM009-fe-md-links/archivos/example/lola/susan.md',
+        status: 200,
+        ok: 'OK'
+    },
+    {
+        href: 'https://www.1and1.es/digitalguide/paginas-web/diseno-web/mobile-first-la-nueva-tendencia-del-diseno-web/',
+        text: 'Mobile First: el enfoque actual del diseño web móvil - 1and1',
+        file: '/home/maytezhou/Desktop/MD-LINKS/LIM009-fe-md-links/archivos/example/lola/susan.md',
+        status: 200,
+        ok: 'OK'
+    },
+    {
+        href: 'http://yoursite.com/new-link-to-replace/',
+        text: 'Error: 404',
+        file: '/home/maytezhou/Desktop/MD-LINKS/LIM009-fe-md-links/archivos/lucero.md',
+        status: 404,
+        ok: 'Not Found'
+    }, {
+        href: 'https://www.mediaclick.es/blog/diseno-web-responsive-design-y-la-importancia-del-mobile-first/',
+        text: 'Diseño web, responsive design y la importancia del mobile first - Media Click',
+        file: '/home/maytezhou/Desktop/MD-LINKS/LIM009-fe-md-links/archivos/example/lola/susan.md',
+        status: 200,
+        ok: 'OK'
+    },
+    {
+        href: 'https://www.1and1.es/digitalguide/paginas-web/diseno-web/mobile-first-la-nueva-tendencia-del-diseno-web/',
+        text: 'Mobile First: el enfoque actual del diseño web móvil - 1and1',
+        file: '/home/maytezhou/Desktop/MD-LINKS/LIM009-fe-md-links/archivos/example/lola/susan.md',
+        status: 200,
+        ok: 'OK'
+    },
+    {
+        href: 'http://yoursite.com/new-link-to-replace/',
+        text: 'Error: 404',
+        file: '/home/maytezhou/Desktop/MD-LINKS/LIM009-fe-md-links/archivos/lucero.md',
+        status: 404,
+        ok: 'Not Found'
+    }
+];
+describe('gettingTotalLinks', () => {
+    it('debería ser una función', () => {
+        expect(typeof gettingTotalLinks).toBe('function');
+    });
+    it('Debería  retornar  un numero que representa el total de links (total de objetos) dentro del array)', () => {
+
+        expect(gettingTotalLinks(arrObj3)).toEqual(10);
+
+    });
+});
+describe('gettingUniqueLinks', () => {
+    it('debería ser una función', () => {
+        expect(typeof gettingUniqueLinks).toBe('function');
+    });
+    it('Debería  retornar  un numero que representa el total de links unicos (objetos unicos) dentro del array)', () => {
+
+        expect(gettingUniqueLinks(arrObj3)).toEqual(7);
+
+    });
+});
+describe('gettingUniqueLinks', () => {
+    it('debería ser una función', () => {
+        expect(typeof gettingUniqueLinks).toBe('function');
+    });
+    it('Debería  retornar  un numero que representa el total de links unicos (objetos unicos) dentro del array)', () => {
+
+        expect(gettingUniqueLinks(arrObj3)).toEqual(7);
+
+    });
+});
+describe('gettingBrokenLinks', () => {
+    it('debería ser una función', () => {
+        expect(typeof gettingBrokenLinks).toBe('function');
+    });
+    it('Debería  retornar  un numero que representa el total de links rotos (object.herf) dentro del array)', () => {
+
+        expect(gettingBrokenLinks(arrObj3)).toEqual(2);
 
     });
 });

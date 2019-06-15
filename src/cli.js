@@ -53,30 +53,29 @@ const cli = (path, string1, string2) => {
 
         options.validate = true
         return mdLinks(path, options).then((response) => {
-            //console.log(response);
+            console.log(response);
             response.forEach((obj) => {
-                console.log(`  ${obj.file} \n ${obj.href} \n ${(obj.ok!== 'OK') ?'fail':obj.ok} \n ${obj.status} \n${obj.text} \n`);
-                return `  ${obj.file},${obj.href},${obj.ok},${obj.status},${obj.text} \n`;
+                //  console.log(`  ${obj.file} \n ${obj.href} \n ${(obj.ok!== 'OK') ?'fail':obj.ok} \n ${obj.status} \n${obj.text} \n`);
+                return `  ${obj.file} \n ${obj.href} \n ${(obj.ok!== 'OK') ?'fail':obj.ok} \n ${obj.status} \n${obj.text} \n`;
             });
         });
 
     } else if (path !== undefined && string1 == undefined && string2 == undefined) {
         options.validate = false;
         return mdLinks(path, options).then((response) => {
-            //console.log(response);
+            console.log(response);
             response.forEach(obj => {
-                console.log(`  ${obj.file}\n ${obj.href} \n ${obj.text} \n`);
-                return `${obj.file},${obj.href},${obj.text} \n`;
+                //console.log(`  ${obj.file}\n ${obj.href} \n ${obj.text} \n`);
+                return `  ${obj.file}\n ${obj.href} \n ${obj.text} \n`;
             });
 
         });
     } else if (path !== undefined && string1 == '--stats' && string2 == undefined) {
         options.validate = false;
         return mdLinks(path, options).then((response) => {
-            response
 
             console.log(`Total : ${gettingTotalLinks(response)} \n Unique: ${gettingUniqueLinks(response)}`);
-
+            return `Total : ${gettingTotalLinks(response)} \n Unique: ${gettingUniqueLinks(response)}`;
         })
 
     } else if (path !== undefined && string1 == '--stats' && string2 == '--validate' ||
@@ -84,11 +83,12 @@ const cli = (path, string1, string2) => {
     ) {
         options.validate = true;
         return mdLinks(path, options).then((response) => {
-            response
+            // console.log(response);
             console.log(`Total : ${gettingTotalLinks(response)} \n Unique: ${gettingUniqueLinks(response)} \n Broken: ${gettingBrokenLinks(response)} `);
+            return `Total : ${gettingTotalLinks(response)} \n Unique: ${gettingUniqueLinks(response)} \n Broken: ${gettingBrokenLinks(response)} `;
         })
 
     }
 
 };
-cli(pathCommandUser, options1User, options2User);
+//cli(pathCommandUser, options1User, options2User);

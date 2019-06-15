@@ -76,7 +76,7 @@ export const gettingArrObjOfMdLinks = (arrPaths) => {
 };
 
 
-
+//gettingArrObjOfMdLinks(gettingArrOfMarkdownFiles('../archivos'));
 //console.log(gettingArrObjOfMdLinks(gettingArrOfMarkdownFiles(pathCommandUser)));
 // Ruta relativa de una carpeta '../archivos';
 // Ruta relativa de un archivo '../archivos/lucero.md';
