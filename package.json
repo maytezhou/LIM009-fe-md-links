@@ -4,7 +4,7 @@
     "description": "## Preámbulo",
     "main": "cli.js",
     "scripts": {
-        "test": "jest --coverage",
+        "test": "jest --coverage  ",
         "build": "babel src -d lib"
     },
     "repository": {
@@ -23,10 +23,11 @@
     "devDependencies": {
         "@babel/cli": "^7.4.4",
         "@babel/core": "^7.4.5",
-        "babel-install": "2.1.0",
         "@babel/node": "^7.4.5",
+        "@babel/plugin-transform-runtime": "^7.4.4",
         "@babel/preset-env": "^7.4.5",
         "@types/node": "^12.0.6",
+        "babel-install": "2.1.0",
         "eslint": "^5.16.0",
         "jest": "^24.8.0"
     },
