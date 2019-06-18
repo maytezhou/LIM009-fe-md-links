@@ -77,7 +77,7 @@ export const cli = (path, string1, string2) => {
         options.validate = false;
         return mdLinks(path, options).then((response) => {
 
-            console.log(`Total:${gettingTotalLinks(response)}\n Unique:${gettingUniqueLinks(response)}`);
+            console.log(`Total:${gettingTotalLinks(response)},Unique:${gettingUniqueLinks(response)}`);
             return `Total:${gettingTotalLinks(response)},Unique:${gettingUniqueLinks(response)}`;
         })
 
@@ -87,7 +87,7 @@ export const cli = (path, string1, string2) => {
         options.validate = true;
         return mdLinks(path, options).then((response) => {
             // console.log(response);
-            console.log(`Total:${gettingTotalLinks(response)}\n Unique:${gettingUniqueLinks(response)}\n Broken:${gettingBrokenLinks(response)}`);
+            console.log(`Total:${gettingTotalLinks(response)},Unique:${gettingUniqueLinks(response)},Broken:${gettingBrokenLinks(response)}`);
             return `Total:${gettingTotalLinks(response)},Unique:${gettingUniqueLinks(response)},Broken:${gettingBrokenLinks(response)}`;
         })
 

@@ -848,3 +848,47 @@ describe('cli', () => {
     });
 
 });
+const output12 = `/home/maytezhou/Desktop/MD-LINKS/LIM009-fe-md-links/archivos/example/lola/lulu/luz.md https://developer.mozilla.org/es/docs/CSS/Media_queries <code>media queries</code>,/home/maytezhou/Desktop/MD-LINKS/LIM009-fe-md-links/archivos/example/lola/susan.md https://dzone.com/articles/how-single-page-web-applications-actually-work SPA,/home/maytezhou/Desktop/MD-LINKS/LIM009-fe-md-links/archivos/example/lola/susan.md https://dzone.com/articles/how-single-page-web-applications-actually-work versión traducida,/home/maytezhou/Desktop/MD-LINKS/LIM009-fe-md-links/archivos/example/lola/susan.md https://darwindigital.com/mobile-first-versus-responsive-web-design/ mobile first,/home/maytezhou/Desktop/MD-LINKS/LIM009-fe-md-links/archivos/example/lola/susan.md https://translate.google.com/translate?hl=&sl=auto&tl=es&u=https%3A%2F%2Fdarwindigital.com%2Fmobile-first-versus-responsive-web-design versión traducida,/home/maytezhou/Desktop/MD-LINKS/LIM009-fe-md-links/archivos/example/lola/susan.md https://developer.mozilla.org/es/docs/Web/JavaScript/Referencia/Sentencias/import <code>import</code>,/home/maytezhou/Desktop/MD-LINKS/LIM009-fe-md-links/archivos/example/lola/susan.md https://developer.mozilla.org/es/docs/Web/JavaScript/Referencia/Sentencias/export <code>export</code>,/home/maytezhou/Desktop/MD-LINKS/LIM009-fe-md-links/archivos/example/lola/susan.md https://es.wikipedia.org/wiki/Modelo%E2%80%93vista%E2%80%93controlador MVC,/home/maytezhou/Desktop/MD-LINKS/LIM009-fe-md-links/archivos/example/lola/susan.md https://www.mediaclick.es/blog/diseno-web-responsive-design-y-la-importancia-del-mobile-first/ <em>mobile first</em>,/home/maytezhou/Desktop/MD-LINKS/LIM009-fe-md-links/archivos/example/lola/susan.md https://developer.mozilla.org/es/docs/DOM/Manipulando_el_historial_del_navegador manipulando el historial del
+navegador,/home/maytezhou/Desktop/MD-LINKS/LIM009-fe-md-links/archivos/example/lola/susan.md https://developer.mozilla.org/es/docs/Web/API/Window/history <code>window.history</code>,/home/maytezhou/Desktop/MD-LINKS/LIM009-fe-md-links/archivos/example/lola/susan.md https://firebase.google.com/ Firebase,/home/maytezhou/Desktop/MD-LINKS/LIM009-fe-md-links/archivos/example/lola/susan.md https://firebase.google.com/docs/auth/ <code>Firebase authentication</code>,/home/maytezhou/Desktop/MD-LINKS/LIM009-fe-md-links/archivos/example/lola/susan.md https://firebase.google.com/docs/firestore/security/get-started <code>Firestore security rules</code>,/home/maytezhou/Desktop/MD-LINKS/LIM009-fe-md-links/archivos/example/lola/susan.md https://css-tricks.com/snippets/css/a-guide-to-flexbox/ <code>flexbox</code>,/home/maytezhou/Desktop/MD-LINKS/LIM009-fe-md-links/archivos/example/lola/susan.md https://developer.mozilla.org/es/docs/CSS/Media_queries <code>media queries</code>,/home/maytezhou/Desktop/MD-LINKS/LIM009-fe-md-links/archivos/example/lola/susan.md https://developer.mozilla.org/es/docs/Web/JavaScript/Referencia/Sentencias/export Modulos: Export,/home/maytezhou/Desktop/MD-LINKS/LIM009-fe-md-links/archivos/example/lola/susan.md https://developer.mozilla.org/es/docs/Web/JavaScript/Referencia/Sentencias/import Modulos: Import,/home/maytezhou/Desktop/MD-LINKS/LIM009-fe-md-links/archivos/example/lola/susan.md https://www.mediaclick.es/blog/diseno-web-responsive-design-y-la-importancia-del-mobile-first/ Diseño web, responsive design y la importancia del mobile first - Media Click,/home/maytezhou/Desktop/MD-LINKS/LIM009-fe-md-links/archivos/example/lola/susan.md https://www.1and1.es/digitalguide/paginas-web/diseno-web/mobile-first-la-nueva-tendencia-del-diseno-web/ Mobile First: el enfoque actual del diseño web móvil - 1and1,/home/maytezhou/Desktop/MD-LINKS/LIM009-fe-md-links/archivos/example/lola/susan.md https://desarrolloweb.com/articulos/mobile-first-responsive.html Mobile First - desarrolloweb.com,/home/maytezhou/Desktop/MD-LINKS/LIM009-fe-md-links/archivos/example/lola/susan.md https://zurb.com/word/mobile-first Mobile First - ZURB,/home/maytezhou/Desktop/MD-LINKS/LIM009-fe-md-links/archivos/example/lola/susan.md https://www.nngroup.com/articles/mobile-first-not-mobile-only/ Mobile First Is NOT Mobile Only - Nielsen Norman Group,/home/maytezhou/Desktop/MD-LINKS/LIM009-fe-md-links/archivos/example/me.md https://developer.mozilla.org/es/docs/Web/JavaScript/Referencia/Sentencias/import <code>import</code>,/home/maytezhou/Desktop/MD-LINKS/LIM009-fe-md-links/archivos/example/me.md https://developer.mozilla.org/es/docs/Web/JavaScript/Referencia/Sentencias/export <code>export</code>,/home/maytezhou/Desktop/MD-LINKS/LIM009-fe-md-links/archivos/example/me.md https://es.wikipedia.org/wiki/Modelo%E2%80%93vista%E2%80%93controlador MVC,/home/maytezhou/Desktop/MD-LINKS/LIM009-fe-md-links/archivos/hola.md https://developer.mozilla.org/es/docs/Web/JavaScript/Referencia/Sentencias/export Modulos: Export,/home/maytezhou/Desktop/MD-LINKS/LIM009-fe-md-links/archivos/lucero.md http://yoursite.com/new-link-to-replace/ Error: 404`;
+describe('cli', () => {
+    it('debería ser una función', () => {
+        expect(typeof cli).toBe('function');
+    });
+    it('Debería  retornar  un string con los href,file,text de cada objeto  link ', (done) => {
+        return cli('./archivos').then((response) => {
+            expect(response).toBe(output12);
+            done();
+        });
+
+    });
+
+});
+const output13 = 'Total:28,Unique:19';
+describe('cli', () => {
+    it('debería ser una función', () => {
+        expect(typeof cli).toBe('function');
+    });
+    it('Debería  retornar  un string  con los valores de Total y Unique', (done) => {
+        return cli('./archivos', '--stats').then((response) => {
+            expect(response).toBe(output13);
+            done();
+        });
+
+    });
+
+});
+
+const output14 = 'Total:28,Unique:19,Broken:1';
+describe('cli', () => {
+    it('debería ser una función', () => {
+        expect(typeof cli).toBe('function');
+    });
+    it('Debería  retornar  un string  con los valores de Total,Unique y Broken', (done) => {
+        return cli('./archivos', '--stats', '--validate').then((response) => {
+            expect(response).toBe(output14);
+            done();
+        });
+
+    });
+
+});
