@@ -102,13 +102,13 @@ export const mdLinks = (path, obj) => {
     if (obj.validate == false) {
         return new Promise((resolve, reject) => {
             resolve(gettingArrObjOfMdLinks(gettingArrOfMarkdownFiles(path)));
-            reject("Something went wrong")
+
         })
 
     } else {
         return new Promise((resolve, reject) => {
             resolve(gettingStatsOfUrl(gettingArrObjOfMdLinks(gettingArrOfMarkdownFiles(path))));
-            reject("Something went wrong")
+
         })
     }
 

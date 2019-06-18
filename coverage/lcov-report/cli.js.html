@@ -20,24 +20,24 @@
     </h1>
     <div class='clearfix'>
       <div class='fl pad1y space-right2'>
-        <span class="strong">55.56% </span>
+        <span class="strong">72.22% </span>
         <span class="quiet">Statements</span>
-        <span class='fraction'>20/36</span>
+        <span class='fraction'>26/36</span>
       </div>
       <div class='fl pad1y space-right2'>
-        <span class="strong">59.26% </span>
+        <span class="strong">76% </span>
         <span class="quiet">Branches</span>
-        <span class='fraction'>16/27</span>
+        <span class='fraction'>19/25</span>
       </div>
       <div class='fl pad1y space-right2'>
-        <span class="strong">50% </span>
+        <span class="strong">70% </span>
         <span class="quiet">Functions</span>
-        <span class='fraction'>5/10</span>
+        <span class='fraction'>7/10</span>
       </div>
       <div class='fl pad1y space-right2'>
-        <span class="strong">55.56% </span>
+        <span class="strong">72.22% </span>
         <span class="quiet">Lines</span>
-        <span class='fraction'>20/36</span>
+        <span class='fraction'>26/36</span>
       </div>
     </div>
     <p class="quiet">
@@ -140,7 +140,9 @@
 <a name='L92'></a><a href='#L92'>92</a>
 <a name='L93'></a><a href='#L93'>93</a>
 <a name='L94'></a><a href='#L94'>94</a>
-<a name='L95'></a><a href='#L95'>95</a></td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
+<a name='L95'></a><a href='#L95'>95</a>
+<a name='L96'></a><a href='#L96'>96</a>
+<a name='L97'></a><a href='#L97'>97</a></td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -191,26 +193,28 @@
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">28x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1x</span>
@@ -285,16 +289,17 @@ const options = {
 export const cli = (path, string1, string2) =&gt; {
 &nbsp;
     //console.log(string2);
-    <span class="missing-if-branch" title="if path not taken" >I</span>if (path !== undefined &amp;&amp; string1 == '--validate' &amp;&amp; string2 == undefined) {
+    if (path !== undefined &amp;&amp; string1 == '--validate' &amp;&amp; string2 == undefined) {
 &nbsp;
-<span class="cstat-no" title="statement not covered" >        options.validate = true</span>
-<span class="cstat-no" title="statement not covered" >        return mdLinks(path, options).then(<span class="fstat-no" title="function not covered" >(r</span>esponse) =&gt; {</span>
+        options.validate = true
+        return mdLinks(path, options).then((response) =&gt; {
             //console.log(response);
-            const newArrObjLinks = <span class="cstat-no" title="statement not covered" >response.map(<span class="fstat-no" title="function not covered" >(o</span>bj) =&gt; {</span>
-<span class="cstat-no" title="statement not covered" >                console.log(`${obj.file},${obj.href},${(obj.ok!== 'OK')?'fail':obj.ok},${obj.status},${obj.text}`);</span>
-<span class="cstat-no" title="statement not covered" >                return `${obj.file},${obj.href},${(obj.ok!== 'OK')?'fail':obj.ok},${obj.status},${obj.text}`;</span>
+            const newArrObjLinks = response.map((obj) =&gt; {
+                //console.log(`${obj.file} ${obj.href} ${(obj.ok!== 'OK')?'fail':obj.ok} ${obj.status} ${obj.text}`);
+                return `${obj.file} ${obj.href} ${(obj.ok!== 'OK')?'fail':obj.ok} ${obj.status} ${obj.text}`;
             })
-<span class="cstat-no" title="statement not covered" >            return newArrObjLinks.toString();</span>
+            console.log(newArrObjLinks.toString());
+            return newArrObjLinks.toString();
         });
 &nbsp;
     } else <span class="missing-if-branch" title="if path not taken" >I</span>if (path !== undefined &amp;&amp; string1 == undefined &amp;&amp; <span class="branch-2 cbranch-no" title="branch not covered" >string2 == undefined)</span> {
@@ -302,9 +307,10 @@ export const cli = (path, string1, string2) =&gt; {
 <span class="cstat-no" title="statement not covered" >        return mdLinks(path, options).then(<span class="fstat-no" title="function not covered" >(r</span>esponse) =&gt; {</span>
             // console.log(response);
             const newArrObjLinks = <span class="cstat-no" title="statement not covered" >response.map(<span class="fstat-no" title="function not covered" >ob</span>j =&gt; {</span>
-<span class="cstat-no" title="statement not covered" >                console.log(`${obj.file}\n${obj.href}\n${obj.text}\n`);</span>
-<span class="cstat-no" title="statement not covered" >                return `${obj.file},${obj.href},${obj.text}`;</span>
+                //console.log(`${obj.file},${obj.href},${obj.text}\n`);
+<span class="cstat-no" title="statement not covered" >                return `${obj.file} ${obj.href} ${obj.text}`;</span>
             });
+<span class="cstat-no" title="statement not covered" >            console.log(newArrObjLinks.toString());</span>
 <span class="cstat-no" title="statement not covered" >            return newArrObjLinks.toString();</span>
         })
     } else <span class="missing-if-branch" title="if path not taken" >I</span>if (path !== undefined &amp;&amp; string1 == '--stats' &amp;&amp; <span class="branch-2 cbranch-no" title="branch not covered" >string2 == undefined)</span> {
@@ -334,7 +340,7 @@ export const cli = (path, string1, string2) =&gt; {
 </div><!-- /wrapper -->
 <div class='footer quiet pad2 space-top1 center small'>
   Code coverage
-  generated by <a href="https://istanbul.js.org/" target="_blank">istanbul</a> at Mon Jun 17 2019 18:17:10 GMT-0500 (Peru Standard Time)
+  generated by <a href="https://istanbul.js.org/" target="_blank">istanbul</a> at Mon Jun 17 2019 19:43:34 GMT-0500 (Peru Standard Time)
 </div>
 </div>
 <script src="prettify.js"></script>
