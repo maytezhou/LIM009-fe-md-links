@@ -1,5 +1,9 @@
 import mock from 'mock-fs';
-import { gettingAbsolutePath } from '../src/path.js';
+import { verifyingIfisAMarkdownFile, gettingAbsolutePath } from '../src/path.js';
+import { gettingArrOfMarkdownFiles, gettingArrObjOfMdLinks, gettingUniqueLinks, gettingBrokenLinks, gettingTotalLinks, gettingStatsOfUrl, mdLinks } from '../src/index.js';
+
+import { readDir, readFile } from '../src/read-controller.js';
+import { cli } from '../src/cli.js';
 const path = require('path');
 
 
@@ -32,7 +36,7 @@ afterEach(mock.restore);
 const cwd = process.cwd();
 
 
-describe.only('gettingAbsolutePath', () => {
+describe('gettingAbsolutePath', () => {
     it('debería ser una función', () => {
         expect(typeof gettingAbsolutePath).toBe('function');
     });
@@ -41,4 +45,17 @@ describe.only('gettingAbsolutePath', () => {
         expect(gettingAbsolutePath(path.join(cwd, 'archivos'))).toEqual('/home/maytezhou/Desktop/MD-LINKS/LIM009-fe-md-links/archivos');
 
     });
+});
+
+
+describe('verifyingIfisAMarkdownFile', () => {
+    it('debería ser una función', () => {
+        expect(typeof verifyingIfisAMarkdownFile).toBe('function');
+    });
+    it('Debería retornar una ruta absoluta de un archivo markdown', () => {
+
+        expect(verifyingIfisAMarkdownFile(path.join(cwd, 'archivos/example/me.md'))).toEqual('/home/maytezhou/Desktop/MD-LINKS/LIM009-fe-md-links/archivos/example/me.md');
+
+    });
+
 });
