@@ -53,7 +53,7 @@ export const cli = (path, string1, string2) => {
 
         options.validate = true
         return mdLinks(path, options).then((response) => {
-            //console.log(response);
+            // console.log(response);
             const newArrObjLinks = response.map((obj) => {
                 //console.log(`${obj.file} ${obj.href} ${(obj.ok!== 'OK')?'fail':obj.ok} ${obj.status} ${obj.text}`);
                 return `${obj.file} ${obj.href} ${(obj.ok!== 'OK')?'fail':obj.ok} ${obj.status} ${obj.text}`;
@@ -65,7 +65,7 @@ export const cli = (path, string1, string2) => {
     } else if (path !== undefined && string1 == undefined && string2 == undefined) {
         options.validate = false;
         return mdLinks(path, options).then((response) => {
-            // console.log(response);
+            //console.log(response);
             const newArrObjLinks = response.map(obj => {
                 //console.log(`${obj.file},${obj.href},${obj.text}\n`);
                 return `${obj.file} ${obj.href} ${obj.text}`;
