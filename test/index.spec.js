@@ -29,6 +29,18 @@ describe('gettingAbsolutePath', () => {
     });
 });
 
+
+describe('gettingAbsolutePath', () => {
+    it('debería ser una función', () => {
+        expect(typeof gettingAbsolutePath).toBe('function');
+    });
+    it('Debería poder convetir la ruta relativa a ruta absoluta', () => {
+
+        expect(gettingAbsolutePath('/home/maytezhou/Desktop/MD-LINKS/LIM009-fe-md-links/archivos/hola.md')).toEqual('/home/maytezhou/Desktop/MD-LINKS/LIM009-fe-md-links/archivos/hola.md');
+
+    });
+});
+
 const arrOfMarkdownPaths = ['/home/maytezhou/Desktop/MD-LINKS/LIM009-fe-md-links/archivos/example/lola/lili.md',
     '/home/maytezhou/Desktop/MD-LINKS/LIM009-fe-md-links/archivos/example/lola/lulu/luz.md',
     '/home/maytezhou/Desktop/MD-LINKS/LIM009-fe-md-links/archivos/example/lola/lulu/mar.md',
