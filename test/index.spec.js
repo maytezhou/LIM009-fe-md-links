@@ -822,12 +822,7 @@ describe('mdLinks', () => {
             expect(response).toEqual(output6);
             done()
         })
-
-
     });
-
-
-
 });
 
 const output9 = `Total:28,Unique:19,Broken:1`;

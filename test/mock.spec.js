@@ -1,9 +1,9 @@
 import mock from 'mock-fs';
 import { verifyingIfisAMarkdownFile, gettingAbsolutePath } from '../src/path.js';
 import { gettingArrOfMarkdownFiles, gettingArrObjOfMdLinks, gettingUniqueLinks, gettingBrokenLinks, gettingTotalLinks, gettingStatsOfUrl, mdLinks } from '../src/index.js';
-
-import { readDir, readFile } from '../src/read-controller.js';
 import { cli } from '../src/cli.js';
+import { readDir, readFile } from '../src/read-controller.js';
+
 const path = require('path');
 
 
@@ -45,6 +45,11 @@ describe('gettingAbsolutePath', () => {
         expect(gettingAbsolutePath(path.join(cwd, 'archivos'))).toEqual('/home/maytezhou/Desktop/MD-LINKS/LIM009-fe-md-links/archivos');
 
     });
+    it('Debería poder convetir la ruta relativa a ruta absoluta', () => {
+
+        expect(gettingAbsolutePath('archivos/hola.md')).toEqual(path.join(cwd, 'archivos/hola.md'));
+
+    });
 });
 
 
@@ -58,4 +63,188 @@ describe('verifyingIfisAMarkdownFile', () => {
 
     });
 
+});
+
+const arrOfMarkdownPaths = ['/home/maytezhou/Desktop/MD-LINKS/LIM009-fe-md-links/archivos/example/lola/lili.md',
+    '/home/maytezhou/Desktop/MD-LINKS/LIM009-fe-md-links/archivos/example/lola/lulu/luz.md',
+    '/home/maytezhou/Desktop/MD-LINKS/LIM009-fe-md-links/archivos/example/lola/lulu/mar.md',
+    '/home/maytezhou/Desktop/MD-LINKS/LIM009-fe-md-links/archivos/example/lola/shawn.md',
+    '/home/maytezhou/Desktop/MD-LINKS/LIM009-fe-md-links/archivos/example/lola/susan.md',
+    '/home/maytezhou/Desktop/MD-LINKS/LIM009-fe-md-links/archivos/example/me.md',
+    '/home/maytezhou/Desktop/MD-LINKS/LIM009-fe-md-links/archivos/hello.md',
+    '/home/maytezhou/Desktop/MD-LINKS/LIM009-fe-md-links/archivos/hola.md',
+    '/home/maytezhou/Desktop/MD-LINKS/LIM009-fe-md-links/archivos/lucero.md'
+];
+
+describe('gettingArrOfMarkdownFiles', () => {
+    it('debería ser una función', () => {
+        expect(typeof gettingArrOfMarkdownFiles).toBe('function');
+    });
+    it('Debería  retornar un array con  las  rutas de todos los archivos markdows', () => {
+
+        expect(gettingArrOfMarkdownFiles(path.join(cwd, 'archivos'))).toEqual(arrOfMarkdownPaths);
+
+    });
+});
+
+
+describe('gettingArrObjOfMdLinks', () => {
+    it('debería ser una función', () => {
+        expect(typeof gettingArrObjOfMdLinks).toBe('function');
+    });
+    it('Debería  retornar  un array de objetos(c/object representa un link con propiedad href,text y file)', () => {
+
+        expect(gettingArrObjOfMdLinks(arrOfMarkdownPaths)).toEqual(gettingArrObjOfMdLinks(gettingArrOfMarkdownFiles(path.join(cwd, 'archivos'))));
+
+    });
+});
+
+
+const input4 = [{
+        href: 'https://desarrolloweb.com/articulos/mobile-first-responsive.html',
+        text: 'Mobile First - desarrolloweb.com',
+        file: '/home/maytezhou/Desktop/MD-LINKS/LIM009-fe-md-links/archivos/example/lola/susan.md'
+    },
+    {
+        href: 'https://zurb.com/word/mobile-first',
+        text: 'Mobile First - ZURB',
+        file: '/home/maytezhou/Desktop/MD-LINKS/LIM009-fe-md-links/archivos/example/lola/susan.md'
+    },
+    {
+        href: 'https://www.nngroup.com/articles/mobile-first-not-mobile-only/',
+        text: 'Mobile First Is NOT Mobile Only - Nielsen Norman Group',
+        file: '/home/maytezhou/Desktop/MD-LINKS/LIM009-fe-md-links/archivos/example/lola/susan.md'
+    },
+    {
+        href: 'https://developer.mozilla.org/es/docs/Web/JavaScript/Referencia/Sentencias/import',
+        text: '<code>import</code>',
+        file: '/home/maytezhou/Desktop/MD-LINKS/LIM009-fe-md-links/archivos/example/me.md'
+    },
+    {
+        href: 'https://developer.mozilla.org/es/docs/Web/JavaScript/Referencia/Sentencias/export',
+        text: '<code>export</code>',
+        file: '/home/maytezhou/Desktop/MD-LINKS/LIM009-fe-md-links/archivos/example/me.md'
+    },
+    {
+        href: 'https://es.wikipedia.org/wiki/Modelo%E2%80%93vista%E2%80%93controlador',
+        text: 'MVC',
+        file: '/home/maytezhou/Desktop/MD-LINKS/LIM009-fe-md-links/archivos/example/me.md'
+    },
+    {
+        href: 'https://developer.mozilla.org/es/docs/Web/JavaScript/Referencia/Sentencias/export',
+        text: 'Modulos: Export',
+        file: '/home/maytezhou/Desktop/MD-LINKS/LIM009-fe-md-links/archivos/hola.md'
+    },
+    {
+        href: 'http://yoursite.com/new-link-to-replace/',
+        text: 'Error: 404',
+        file: '/home/maytezhou/Desktop/MD-LINKS/LIM009-fe-md-links/archivos/lucero.md'
+    }
+]
+const output4 = [{
+        href: 'https://desarrolloweb.com/articulos/mobile-first-responsive.html',
+        text: 'Mobile First - desarrolloweb.com',
+        file: '/home/maytezhou/Desktop/MD-LINKS/LIM009-fe-md-links/archivos/example/lola/susan.md',
+        status: 200,
+        ok: 'OK'
+    },
+    {
+        href: 'https://zurb.com/word/mobile-first',
+        text: 'Mobile First - ZURB',
+        file: '/home/maytezhou/Desktop/MD-LINKS/LIM009-fe-md-links/archivos/example/lola/susan.md',
+        status: 200,
+        ok: 'OK'
+    },
+    {
+        href: 'https://www.nngroup.com/articles/mobile-first-not-mobile-only/',
+        text: 'Mobile First Is NOT Mobile Only - Nielsen Norman Group',
+        file: '/home/maytezhou/Desktop/MD-LINKS/LIM009-fe-md-links/archivos/example/lola/susan.md',
+        status: 200,
+        ok: 'OK'
+    },
+    {
+        href: 'https://developer.mozilla.org/es/docs/Web/JavaScript/Referencia/Sentencias/import',
+        text: '<code>import</code>',
+        file: '/home/maytezhou/Desktop/MD-LINKS/LIM009-fe-md-links/archivos/example/me.md',
+        status: 200,
+        ok: 'OK'
+    },
+    {
+        href: 'https://developer.mozilla.org/es/docs/Web/JavaScript/Referencia/Sentencias/export',
+        text: '<code>export</code>',
+        file: '/home/maytezhou/Desktop/MD-LINKS/LIM009-fe-md-links/archivos/example/me.md',
+        status: 200,
+        ok: 'OK'
+    },
+    {
+        href: 'https://es.wikipedia.org/wiki/Modelo%E2%80%93vista%E2%80%93controlador',
+        text: 'MVC',
+        file: '/home/maytezhou/Desktop/MD-LINKS/LIM009-fe-md-links/archivos/example/me.md',
+        status: 200,
+        ok: 'OK'
+    },
+    {
+        href: 'https://developer.mozilla.org/es/docs/Web/JavaScript/Referencia/Sentencias/export',
+        text: 'Modulos: Export',
+        file: '/home/maytezhou/Desktop/MD-LINKS/LIM009-fe-md-links/archivos/hola.md',
+        status: 200,
+        ok: 'OK'
+    },
+    {
+        href: 'http://yoursite.com/new-link-to-replace/',
+        text: 'Error: 404',
+        file: '/home/maytezhou/Desktop/MD-LINKS/LIM009-fe-md-links/archivos/lucero.md',
+        status: 404,
+        ok: 'Not Found'
+    }
+]
+describe('gettingStatsOfUrl', () => {
+    it('debería ser una función', () => {
+        expect(typeof gettingStatsOfUrl).toBe('function');
+    });
+    it('Debería  retornar  una promesa  que resuelve un array de objetos)', () => {
+
+        return gettingStatsOfUrl(input4).then((response) => {
+            expect(response).toEqual(output4)
+        })
+
+    });
+});
+
+const output = ['example', 'hello.md', 'hola.md', 'lucero.md'];
+describe(' readDir', () => {
+    it('debería ser una función', () => {
+        expect(typeof readDir).toBe('function');
+    });
+    it('Debería  retornar  un array de strings con el nombre de cada elemento dentro de la carpeta', () => {
+
+        expect(readDir(path.join(cwd, 'archivos'))).toEqual(output);
+
+    });
+});
+const output2 = 'Otras: [Modulos: Export](https://developer.mozilla.org/es/docs/Web/JavaScript/Referencia/Sentencias/export)';
+describe(' readFile', () => {
+    it('debería ser una función', () => {
+        expect(typeof readFile).toBe('function');
+    });
+    it('Debería  retornar  un string con el contenido del file', () => {
+
+        expect(readFile(path.join(cwd, 'archivos/hola.md'))).toEqual(output2);
+
+    });
+});
+
+
+describe('mdLinks', () => {
+    it('debería ser una función', () => {
+        expect(typeof mdLinks).toBe('function');
+    });
+    it('Debería  retornar  una promesa que al resolverse retorna un array de objetos [{href,file,text},{}])', (done) => {
+        return mdLinks(path.join(cwd, 'archivos'), { validate: false }).then((response) => {
+            expect(response).toEqual(gettingArrObjOfMdLinks(gettingArrOfMarkdownFiles(path.join(cwd, 'archivos'))));
+            done();
+        })
+
+
+    });
 });
