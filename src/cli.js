@@ -53,12 +53,12 @@ export const cli = (path, string1, string2) => {
 
         options.validate = true
         return mdLinks(path, options).then((response) => {
-            // console.log(response);
+            //console.log(response);
             const newArrObjLinks = response.map((obj) => {
-                //console.log(`${obj.file} ${obj.href} ${(obj.ok!== 'OK')?'fail':obj.ok} ${obj.status} ${obj.text}`);
-                return `${obj.file} ${obj.href} ${(obj.ok!== 'OK')?'fail':obj.ok} ${obj.status} ${obj.text}`;
-            })
-            console.log(newArrObjLinks.toString());
+                    //console.log(`${obj.file} ${obj.href} ${(obj.ok!== 'OK')?'fail':obj.ok} ${obj.status} ${obj.text}`);
+                    return `${obj.file} ${obj.href} ${(obj.ok!== 'OK')?'fail':obj.ok} ${obj.status} ${obj.text}`;
+                })
+                //console.log(newArrObjLinks.toString());
             return newArrObjLinks.toString();
         });
 
@@ -70,14 +70,14 @@ export const cli = (path, string1, string2) => {
                 //console.log(`${obj.file},${obj.href},${obj.text}\n`);
                 return `${obj.file} ${obj.href} ${obj.text}`;
             });
-            console.log(newArrObjLinks.toString());
+            //console.log(newArrObjLinks.toString());
             return newArrObjLinks.toString();
         })
     } else if (path !== undefined && string1 == '--stats' && string2 == undefined) {
         options.validate = false;
         return mdLinks(path, options).then((response) => {
 
-            console.log(`Total:${gettingTotalLinks(response)},Unique:${gettingUniqueLinks(response)}`);
+            //console.log(`Total:${gettingTotalLinks(response)},Unique:${gettingUniqueLinks(response)}`);
             return `Total:${gettingTotalLinks(response)},Unique:${gettingUniqueLinks(response)}`;
         })
 
@@ -87,7 +87,7 @@ export const cli = (path, string1, string2) => {
         options.validate = true;
         return mdLinks(path, options).then((response) => {
             // console.log(response);
-            console.log(`Total:${gettingTotalLinks(response)},Unique:${gettingUniqueLinks(response)},Broken:${gettingBrokenLinks(response)}`);
+            // console.log(`Total:${gettingTotalLinks(response)},Unique:${gettingUniqueLinks(response)},Broken:${gettingBrokenLinks(response)}`);
             return `Total:${gettingTotalLinks(response)},Unique:${gettingUniqueLinks(response)},Broken:${gettingBrokenLinks(response)}`;
         })
 

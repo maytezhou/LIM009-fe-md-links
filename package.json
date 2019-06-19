@@ -35,7 +35,6 @@
         "@babel/plugin-transform-modules-commonjs": "^7.4.4",
         "@babel/preset-env": "^7.4.5",
         "acorn": "^6.1.1",
-        "jest": "^24.8.0",
         "markdown-link-check": "^3.7.3",
         "markdown-link-extractor": "^1.2.1",
         "marked": "^0.6.2",

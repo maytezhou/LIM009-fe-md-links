@@ -1,132 +1,128 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<coverage generated="1560904769318" clover="3.2.0">
-  <project timestamp="1560904769318" name="All files">
-    <metrics statements="114" coveredstatements="114" conditionals="41" coveredconditionals="38" methods="33" coveredmethods="33" elements="188" coveredelements="185" complexity="0" loc="114" ncloc="114" packages="1" files="4" classes="4"/>
+<coverage generated="1560984408000" clover="3.2.0">
+  <project timestamp="1560984408000" name="All files">
+    <metrics statements="110" coveredstatements="110" conditionals="41" coveredconditionals="38" methods="33" coveredmethods="33" elements="184" coveredelements="181" complexity="0" loc="110" ncloc="110" packages="1" files="4" classes="4"/>
     <file name="cli.js" path="/home/maytezhou/Desktop/MD-LINKS/LIM009-fe-md-links/src/cli.js">
-      <metrics statements="36" coveredstatements="36" conditionals="25" coveredconditionals="24" methods="10" coveredmethods="10"/>
-      <line num="20" count="2" type="stmt"/>
-      <line num="23" count="2" type="stmt"/>
-      <line num="24" count="2" type="stmt"/>
-      <line num="28" count="2" type="stmt"/>
-      <line num="31" count="2" type="stmt"/>
-      <line num="32" count="2" type="stmt"/>
-      <line num="36" count="2" type="stmt"/>
-      <line num="38" count="2" type="stmt"/>
-      <line num="39" count="2" type="stmt"/>
-      <line num="41" count="2" type="stmt"/>
-      <line num="46" count="2" type="stmt"/>
-      <line num="49" count="2" type="stmt"/>
+      <metrics statements="32" coveredstatements="32" conditionals="25" coveredconditionals="24" methods="10" coveredmethods="10"/>
+      <line num="20" count="1" type="stmt"/>
+      <line num="23" count="1" type="stmt"/>
+      <line num="24" count="1" type="stmt"/>
+      <line num="28" count="1" type="stmt"/>
+      <line num="31" count="1" type="stmt"/>
+      <line num="32" count="1" type="stmt"/>
+      <line num="36" count="1" type="stmt"/>
+      <line num="38" count="1" type="stmt"/>
+      <line num="39" count="1" type="stmt"/>
+      <line num="41" count="1" type="stmt"/>
+      <line num="46" count="1" type="stmt"/>
+      <line num="49" count="1" type="stmt"/>
       <line num="52" count="5" type="cond" truecount="5" falsecount="0"/>
       <line num="54" count="1" type="stmt"/>
       <line num="55" count="1" type="stmt"/>
       <line num="57" count="1" type="stmt"/>
       <line num="59" count="28" type="cond" truecount="2" falsecount="0"/>
-      <line num="61" count="1" type="stmt"/>
       <line num="62" count="1" type="stmt"/>
       <line num="65" count="4" type="cond" truecount="5" falsecount="0"/>
       <line num="66" count="1" type="stmt"/>
       <line num="67" count="1" type="stmt"/>
       <line num="69" count="1" type="stmt"/>
       <line num="71" count="28" type="stmt"/>
-      <line num="73" count="1" type="stmt"/>
       <line num="74" count="1" type="stmt"/>
       <line num="76" count="3" type="cond" truecount="5" falsecount="0"/>
       <line num="77" count="1" type="stmt"/>
       <line num="78" count="1" type="stmt"/>
-      <line num="80" count="1" type="stmt"/>
       <line num="81" count="1" type="stmt"/>
       <line num="84" count="2" type="cond" truecount="7" falsecount="1"/>
       <line num="87" count="2" type="stmt"/>
       <line num="88" count="2" type="stmt"/>
-      <line num="90" count="2" type="stmt"/>
       <line num="91" count="2" type="stmt"/>
     </file>
     <file name="index.js" path="/home/maytezhou/Desktop/MD-LINKS/LIM009-fe-md-links/src/index.js">
       <metrics statements="58" coveredstatements="58" conditionals="10" coveredconditionals="10" methods="18" coveredmethods="18"/>
-      <line num="3" count="2" type="stmt"/>
-      <line num="7" count="2" type="stmt"/>
-      <line num="37" count="2" type="stmt"/>
-      <line num="38" count="156" type="stmt"/>
-      <line num="39" count="156" type="stmt"/>
-      <line num="40" count="156" type="cond" truecount="2" falsecount="0"/>
-      <line num="42" count="108" type="stmt"/>
-      <line num="44" count="108" type="stmt"/>
-      <line num="46" count="156" type="cond" truecount="2" falsecount="0"/>
-      <line num="48" count="48" type="stmt"/>
-      <line num="50" count="48" type="stmt"/>
-      <line num="51" count="144" type="stmt"/>
-      <line num="52" count="144" type="stmt"/>
-      <line num="54" count="144" type="stmt"/>
-      <line num="58" count="156" type="stmt"/>
-      <line num="61" count="2" type="stmt"/>
-      <line num="62" count="12" type="stmt"/>
-      <line num="64" count="12" type="stmt"/>
-      <line num="65" count="108" type="stmt"/>
-      <line num="67" count="108" type="stmt"/>
-      <line num="68" count="108" type="stmt"/>
-      <line num="69" count="336" type="stmt"/>
-      <line num="72" count="108" type="stmt"/>
-      <line num="75" count="12" type="stmt"/>
-      <line num="84" count="2" type="stmt"/>
-      <line num="86" count="6" type="stmt"/>
-      <line num="88" count="128" type="stmt"/>
-      <line num="89" count="128" type="stmt"/>
-      <line num="90" count="128" type="stmt"/>
-      <line num="92" count="128" type="stmt"/>
-      <line num="97" count="6" type="stmt"/>
-      <line num="101" count="2" type="stmt"/>
-      <line num="102" count="8" type="cond" truecount="2" falsecount="0"/>
-      <line num="103" count="4" type="stmt"/>
-      <line num="104" count="4" type="stmt"/>
+      <line num="3" count="1" type="stmt"/>
+      <line num="7" count="1" type="stmt"/>
+      <line num="37" count="1" type="stmt"/>
+      <line num="38" count="130" type="stmt"/>
+      <line num="39" count="130" type="stmt"/>
+      <line num="40" count="130" type="cond" truecount="2" falsecount="0"/>
+      <line num="42" count="90" type="stmt"/>
+      <line num="44" count="90" type="stmt"/>
+      <line num="46" count="130" type="cond" truecount="2" falsecount="0"/>
+      <line num="48" count="40" type="stmt"/>
+      <line num="50" count="40" type="stmt"/>
+      <line num="51" count="120" type="stmt"/>
+      <line num="52" count="120" type="stmt"/>
+      <line num="54" count="120" type="stmt"/>
+      <line num="58" count="130" type="stmt"/>
+      <line num="61" count="1" type="stmt"/>
+      <line num="62" count="10" type="stmt"/>
+      <line num="64" count="10" type="stmt"/>
+      <line num="65" count="90" type="stmt"/>
+      <line num="67" count="90" type="stmt"/>
+      <line num="68" count="90" type="stmt"/>
+      <line num="69" count="280" type="stmt"/>
+      <line num="72" count="90" type="stmt"/>
+      <line num="75" count="10" type="stmt"/>
+      <line num="84" count="1" type="stmt"/>
+      <line num="86" count="5" type="stmt"/>
+      <line num="88" count="120" type="stmt"/>
+      <line num="89" count="120" type="stmt"/>
+      <line num="90" count="120" type="stmt"/>
+      <line num="92" count="120" type="stmt"/>
+      <line num="97" count="5" type="stmt"/>
+      <line num="101" count="1" type="stmt"/>
+      <line num="102" count="7" type="cond" truecount="2" falsecount="0"/>
+      <line num="103" count="3" type="stmt"/>
+      <line num="104" count="3" type="stmt"/>
       <line num="109" count="4" type="stmt"/>
       <line num="110" count="4" type="stmt"/>
-      <line num="117" count="2" type="stmt"/>
-      <line num="188" count="2" type="stmt"/>
-      <line num="189" count="8" type="stmt"/>
-      <line num="190" count="8" type="stmt"/>
-      <line num="191" count="8" type="stmt"/>
-      <line num="192" count="188" type="cond" truecount="2" falsecount="0"/>
-      <line num="193" count="128" type="stmt"/>
-      <line num="199" count="8" type="stmt"/>
-      <line num="200" count="128" type="stmt"/>
-      <line num="203" count="8" type="stmt"/>
-      <line num="205" count="2" type="stmt"/>
-      <line num="206" count="5" type="stmt"/>
-      <line num="208" count="5" type="stmt"/>
-      <line num="210" count="122" type="cond" truecount="2" falsecount="0"/>
-      <line num="211" count="6" type="stmt"/>
-      <line num="215" count="5" type="stmt"/>
-      <line num="218" count="2" type="stmt"/>
-      <line num="219" count="7" type="stmt"/>
-      <line num="221" count="7" type="stmt"/>
-      <line num="223" count="178" type="stmt"/>
-      <line num="227" count="7" type="stmt"/>
+      <line num="117" count="1" type="stmt"/>
+      <line num="188" count="1" type="stmt"/>
+      <line num="189" count="4" type="stmt"/>
+      <line num="190" count="4" type="stmt"/>
+      <line num="191" count="4" type="stmt"/>
+      <line num="192" count="94" type="cond" truecount="2" falsecount="0"/>
+      <line num="193" count="64" type="stmt"/>
+      <line num="199" count="4" type="stmt"/>
+      <line num="200" count="64" type="stmt"/>
+      <line num="203" count="4" type="stmt"/>
+      <line num="205" count="1" type="stmt"/>
+      <line num="206" count="3" type="stmt"/>
+      <line num="208" count="3" type="stmt"/>
+      <line num="210" count="66" type="cond" truecount="2" falsecount="0"/>
+      <line num="211" count="4" type="stmt"/>
+      <line num="215" count="3" type="stmt"/>
+      <line num="218" count="1" type="stmt"/>
+      <line num="219" count="4" type="stmt"/>
+      <line num="221" count="4" type="stmt"/>
+      <line num="223" count="94" type="stmt"/>
+      <line num="227" count="4" type="stmt"/>
     </file>
     <file name="path.js" path="/home/maytezhou/Desktop/MD-LINKS/LIM009-fe-md-links/src/path.js">
       <metrics statements="10" coveredstatements="10" conditionals="6" coveredconditionals="4" methods="2" coveredmethods="2"/>
-      <line num="1" count="2" type="stmt"/>
-      <line num="2" count="2" type="stmt"/>
-      <line num="4" count="110" type="cond" truecount="1" falsecount="1"/>
-      <line num="5" count="110" type="stmt"/>
-      <line num="9" count="2" type="stmt"/>
-      <line num="10" count="160" type="cond" truecount="2" falsecount="0"/>
-      <line num="14" count="7" type="stmt"/>
-      <line num="15" count="7" type="stmt"/>
-      <line num="16" count="153" type="cond" truecount="1" falsecount="1"/>
-      <line num="19" count="153" type="stmt"/>
+      <line num="1" count="1" type="stmt"/>
+      <line num="2" count="1" type="stmt"/>
+      <line num="4" count="91" type="cond" truecount="1" falsecount="1"/>
+      <line num="5" count="91" type="stmt"/>
+      <line num="9" count="1" type="stmt"/>
+      <line num="10" count="132" type="cond" truecount="2" falsecount="0"/>
+      <line num="14" count="1" type="stmt"/>
+      <line num="15" count="1" type="stmt"/>
+      <line num="16" count="131" type="cond" truecount="1" falsecount="1"/>
+      <line num="19" count="131" type="stmt"/>
     </file>
     <file name="read-controller.js" path="/home/maytezhou/Desktop/MD-LINKS/LIM009-fe-md-links/src/read-controller.js">
       <metrics statements="10" coveredstatements="10" conditionals="0" coveredconditionals="0" methods="3" coveredmethods="3"/>
-      <line num="3" count="2" type="stmt"/>
-      <line num="6" count="2" type="stmt"/>
-      <line num="7" count="312" type="stmt"/>
-      <line num="8" count="312" type="stmt"/>
-      <line num="13" count="2" type="stmt"/>
-      <line num="14" count="110" type="stmt"/>
-      <line num="15" count="110" type="stmt"/>
-      <line num="19" count="2" type="stmt"/>
-      <line num="20" count="50" type="stmt"/>
-      <line num="21" count="50" type="stmt"/>
+      <line num="3" count="1" type="stmt"/>
+      <line num="6" count="1" type="stmt"/>
+      <line num="7" count="260" type="stmt"/>
+      <line num="8" count="260" type="stmt"/>
+      <line num="13" count="1" type="stmt"/>
+      <line num="14" count="91" type="stmt"/>
+      <line num="15" count="91" type="stmt"/>
+      <line num="19" count="1" type="stmt"/>
+      <line num="20" count="41" type="stmt"/>
+      <line num="21" count="41" type="stmt"/>
     </file>
   </project>
 </coverage>
