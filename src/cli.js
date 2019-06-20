@@ -68,10 +68,12 @@ export const cli = (path, string1, string2) => {
             //console.log(response);
             const newArrObjLinks = response.map(obj => {
                 //console.log(`${obj.file},${obj.href},${obj.text}\n`);
-                return `${obj.file} ${obj.href} ${obj.text}`;
+                return `${obj.file}\n${obj.href}\n${obj.text}`;
             });
             //console.log(newArrObjLinks.toString());
-            return newArrObjLinks.toString();
+            const result = newArrObjLinks.toString().replace(/,/g, '\n');
+            //console.log(result);
+            return result;
         })
     } else if (path !== undefined && string1 == '--stats' && string2 == undefined) {
         options.validate = false;

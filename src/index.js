@@ -81,6 +81,11 @@ export const gettingArrObjOfMdLinks = (arrPaths) => {
 // Ruta relativa de una carpeta '../archivos';
 // Ruta relativa de un archivo '../archivos/lucero.md';
 // retorna un array de repuestas de la promesas
+const gettingResultOfFetch = (arrObj) => {
+
+
+    return arrObj;
+}
 export const gettingStatsOfUrl = (arrObj, options) => {
     //let contador = 0;
     const newArrObj = arrObj.map((obj) => {
