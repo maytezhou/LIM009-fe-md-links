@@ -60,7 +60,7 @@ export const cli = (path, string1, string2) => {
                 })
                 //console.log(newArrObjLinks.toString());
             const result = newArrObjLinks.toString().replace(/,/g, '\n');
-            //console.log(result);
+            // console.log(result);
             return result;
         });
 
@@ -74,7 +74,7 @@ export const cli = (path, string1, string2) => {
             });
             //console.log(newArrObjLinks.toString());
             const result = newArrObjLinks.toString().replace(/,/g, '\n');
-            //console.log(result);
+            // console.log(result);
             return result;
         })
     } else if (path !== undefined && string1 == '--stats' && string2 == undefined) {
