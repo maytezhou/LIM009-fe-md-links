@@ -59,7 +59,9 @@ export const cli = (path, string1, string2) => {
                     return `${obj.file} ${obj.href} ${(obj.ok!== 'OK')?'fail':obj.ok} ${obj.status} ${obj.text}`;
                 })
                 //console.log(newArrObjLinks.toString());
-            return newArrObjLinks.toString();
+            const result = newArrObjLinks.toString().replace(/,/g, '\n');
+            //console.log(result);
+            return result;
         });
 
     } else if (path !== undefined && string1 == undefined && string2 == undefined) {
