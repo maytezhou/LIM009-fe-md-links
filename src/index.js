@@ -86,17 +86,23 @@ export const gettingStatsOfUrl = (arrObj, options) => {
     //let contador = 0;
     const newArrObj = arrObj.map((obj) => {
         //  contador++
+        try {
         return fetch(obj.href).then((response) => {
             obj.status = response.status;
             obj.ok = response.statusText;
             // console.log(obj);
-            return obj;
-        })
-
-    });
+            return obj;          
+        }) }
+        catch(e){ 
+            obj.status = e.message
+            obj.ok = 'fail'
+            return obj
+        }      
+     });
     //console.log(contador);
     return Promise.all(newArrObj);
 };
+
 
 
 export const mdLinks = (path, obj) => {

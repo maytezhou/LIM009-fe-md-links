@@ -1,14 +1,14 @@
 <!doctype html>
 <html lang="en">
 <head>
-    <title>Code coverage report for path.js</title>
+    <title>Code coverage report for src/read-controller.js</title>
     <meta charset="utf-8" />
-    <link rel="stylesheet" href="prettify.css" />
-    <link rel="stylesheet" href="base.css" />
+    <link rel="stylesheet" href="../prettify.css" />
+    <link rel="stylesheet" href="../base.css" />
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <style type='text/css'>
         .coverage-summary .sorter {
-            background-image: url(sort-arrow-sprite.png);
+            background-image: url(../sort-arrow-sprite.png);
         }
     </style>
 </head>
@@ -16,7 +16,7 @@
 <div class='wrapper'>
   <div class='pad1'>
     <h1>
-      <a href="index.html">All files</a> path.js
+      <a href="../index.html">All files</a> / <a href="index.html">src</a> read-controller.js
     </h1>
     <div class='clearfix'>
       <div class='fl pad1y space-right2'>
@@ -25,14 +25,14 @@
         <span class='fraction'>10/10</span>
       </div>
       <div class='fl pad1y space-right2'>
-        <span class="strong">66.67% </span>
+        <span class="strong">100% </span>
         <span class="quiet">Branches</span>
-        <span class='fraction'>4/6</span>
+        <span class='fraction'>0/0</span>
       </div>
       <div class='fl pad1y space-right2'>
         <span class="strong">100% </span>
         <span class="quiet">Functions</span>
-        <span class='fraction'>2/2</span>
+        <span class='fraction'>3/3</span>
       </div>
       <div class='fl pad1y space-right2'>
         <span class="strong">100% </span>
@@ -66,56 +66,71 @@
 <a name='L18'></a><a href='#L18'>18</a>
 <a name='L19'></a><a href='#L19'>19</a>
 <a name='L20'></a><a href='#L20'>20</a>
-<a name='L21'></a><a href='#L21'>21</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">1x</span>
+<a name='L21'></a><a href='#L21'>21</a>
+<a name='L22'></a><a href='#L22'>22</a>
+<a name='L23'></a><a href='#L23'>23</a>
+<a name='L24'></a><a href='#L24'>24</a>
+<a name='L25'></a><a href='#L25'>25</a>
+<a name='L26'></a><a href='#L26'>26</a></td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">260x</span>
+<span class="cline-any cline-yes">260x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">91x</span>
 <span class="cline-any cline-yes">91x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">132x</span>
+<span class="cline-any cline-yes">41x</span>
+<span class="cline-any cline-yes">41x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">131x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">131x</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">const path = require('path');
-export const verifyingIfisAMarkdownFile = (absolutePath) =&gt; {
+<span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">#!/usr/bin/env node
 &nbsp;
-    <span class="missing-if-branch" title="else path not taken" >E</span>if (path.extname(absolutePath) === '.md') {
-        return absolutePath; // return true
-    }
+const fs = require('fs');
 &nbsp;
+&nbsp;
+export const gettingFsStatObject = (path) =&gt; {
+    const stat = fs.statSync(path);
+    return stat;
 };
-export const gettingAbsolutePath = (path1) =&gt; {
-    if (path.isAbsolute(path1) === false) { // si es relativa
-        //console.log('Es una ruta relativa');
-        //console.log(path2)
+// gettingFsStatObject('../archivos/lucero.md');
+//console.log(gettingFsStatObject('../archivos/lucero.md'));
 &nbsp;
-        const absolutePath = path.resolve(path1); // que lo convierta a absoluta
-        return absolutePath;
-    } else <span class="missing-if-branch" title="else path not taken" >E</span>if (path.isAbsolute(path1) === true) { //si es absoluta
-        //console.log('Es una ruta Absoluta');
-        //console.log(path2);
-        return path1
-    };
-}</pre></td></tr>
+export const readFile = (path) =&gt; {
+    const fileContent = fs.readFileSync(path, 'utf8')
+    return fileContent;
+};
+//console.log(readFile('../archivos/hola.md'));
+&nbsp;
+export const readDir = (path) =&gt; {
+    const arrOfFilesOrDirs = fs.readdirSync(path, 'utf8');
+    return arrOfFilesOrDirs;
+};
+//readDir('../archivos');
+//console.log(readDir('../archivos'));
+// Ruta relativa de una carpeta '../archivos';
+// Ruta relativa de un archivo '../archivos/lucero.md';</pre></td></tr>
 </table></pre>
 <div class='push'></div><!-- for sticky footer -->
 </div><!-- /wrapper -->
 <div class='footer quiet pad2 space-top1 center small'>
   Code coverage
-  generated by <a href="https://istanbul.js.org/" target="_blank">istanbul</a> at Thu Jun 20 2019 09:23:49 GMT-0500 (Peru Standard Time)
+  generated by <a href="https://istanbul.js.org/" target="_blank">istanbul</a> at Thu Jun 20 2019 12:00:57 GMT-0500 (Peru Standard Time)
 </div>
 </div>
-<script src="prettify.js"></script>
+<script src="../prettify.js"></script>
 <script>
 window.onload = function () {
         if (typeof prettyPrint === 'function') {
@@ -123,7 +138,7 @@ window.onload = function () {
         }
 };
 </script>
-<script src="sorter.js"></script>
-<script src="block-navigation.js"></script>
+<script src="../sorter.js"></script>
+<script src="../block-navigation.js"></script>
 </body>
 </html>

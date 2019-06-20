@@ -29,12 +29,14 @@
         "babel-install": "2.1.0",
         "eslint": "^5.16.0",
         "jest": "^24.8.0",
+        "jest-fetch-mock": "^2.1.2",
         "mock-fs": "^4.10.1"
     },
     "dependencies": {
         "@babel/plugin-transform-modules-commonjs": "^7.4.4",
         "@babel/preset-env": "^7.4.5",
         "acorn": "^6.1.1",
+        "fetch-mock": "^7.3.3",
         "markdown-link-check": "^3.7.3",
         "markdown-link-extractor": "^1.2.1",
         "marked": "^0.6.2",
