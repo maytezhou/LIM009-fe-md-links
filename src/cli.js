@@ -60,7 +60,7 @@ export const cli = (path, string1, string2) => {
                 })
                 //console.log(newArrObjLinks.toString());
             const result = newArrObjLinks.toString().replace(/,/g, '\n');
-            // console.log(result);
+            console.log(result);
             return result;
         });
 
@@ -74,14 +74,14 @@ export const cli = (path, string1, string2) => {
             });
             //console.log(newArrObjLinks.toString());
             const result = newArrObjLinks.toString().replace(/,/g, '\n');
-            // console.log(result);
+            console.log(result);
             return result;
         })
     } else if (path !== undefined && string1 == '--stats' && string2 == undefined) {
         options.validate = false;
         return mdLinks(path, options).then((response) => {
 
-            //console.log(`Total:${gettingTotalLinks(response)},Unique:${gettingUniqueLinks(response)}`);
+            console.log(`Total:${gettingTotalLinks(response)},Unique:${gettingUniqueLinks(response)}`);
             return `Total:${gettingTotalLinks(response)},Unique:${gettingUniqueLinks(response)}`;
         })
 
@@ -91,11 +91,11 @@ export const cli = (path, string1, string2) => {
         options.validate = true;
         return mdLinks(path, options).then((response) => {
             // console.log(response);
-            // console.log(`Total:${gettingTotalLinks(response)},Unique:${gettingUniqueLinks(response)},Broken:${gettingBrokenLinks(response)}`);
+            console.log(`Total:${gettingTotalLinks(response)},Unique:${gettingUniqueLinks(response)},Broken:${gettingBrokenLinks(response)}`);
             return `Total:${gettingTotalLinks(response)},Unique:${gettingUniqueLinks(response)},Broken:${gettingBrokenLinks(response)}`;
         })
 
     }
 
 };
-//cli(pathCommandUser, options1User, options2User);
+cli(pathCommandUser, options1User, options2User);
