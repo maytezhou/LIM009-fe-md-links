@@ -2,7 +2,7 @@
     "name": "lim009-fe-md-links",
     "version": "1.0.0",
     "description": "## Preámbulo",
-    "main": "cli.js",
+    "main": "./lib/index.js",
     "scripts": {
         "test": "jest --coverage  ",
         "build": "babel src -d lib"
