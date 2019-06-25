@@ -123,7 +123,7 @@ Broken: 1
 
 
 
-### Implementación del Proyecto\
+### Implementación del Proyecto
 Para realizar el proyecto se utilizo :
 - NPM  
 -Node js
