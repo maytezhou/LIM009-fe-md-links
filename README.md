@@ -84,6 +84,9 @@ las necesidades del usuario:
 - Encontrar un board con el backlog para la implementación de la librería.
 - Encontrar la documentación técnica de la librería.
 - Encontrar la Guía de uso e instalación de la librería.
+ ![md-links-diagram]()
+  ![cli-diagram]()
+  
 
 ### API `mdLinks(path, opts)`
 
