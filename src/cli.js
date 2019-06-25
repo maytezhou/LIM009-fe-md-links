@@ -36,7 +36,6 @@ export const cli = (path, string1, string2) => {
                 return `${obj.file} ${obj.href} ${(obj.ok!== 'OK')?'fail':obj.ok} ${obj.status} ${obj.text}`;
             })
             const result = newArrObjLinks.toString().replace(/,/g, '\n');
-            console.log(result);
             return result;
         });
 
@@ -47,13 +46,11 @@ export const cli = (path, string1, string2) => {
                 return `${obj.file}\n${obj.href}\n${obj.text}`;
             });
             const result = newArrObjLinks.toString().replace(/,/g, '\n');
-            console.log(result);
             return result;
         })
     } else if (path !== undefined && string1 == '--stats' && string2 == undefined) {
         options.validate = false;
         return mdLinks(path, options).then((response) => {
-            console.log(`Total:${gettingTotalLinks(response)},Unique:${gettingUniqueLinks(response)}`);
             return `Total:${gettingTotalLinks(response)},Unique:${gettingUniqueLinks(response)}`;
         })
 
@@ -62,9 +59,14 @@ export const cli = (path, string1, string2) => {
     ) {
         options.validate = true;
         return mdLinks(path, options).then((response) => {
-            console.log(`Total:${gettingTotalLinks(response)},Unique:${gettingUniqueLinks(response)},Broken:${gettingBrokenLinks(response)}`);
             return `Total:${gettingTotalLinks(response)},Unique:${gettingUniqueLinks(response)},Broken:${gettingBrokenLinks(response)}`;
         })
     }
 };
-cli(pathCommandUser, options1User, options2User);
+
+
+if (require.main === module) {
+    cli(pathCommandUser, options1User, options2User).then((result) => {
+        console.log(result);
+    });
+}
