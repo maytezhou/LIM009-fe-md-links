@@ -3,7 +3,7 @@
 - Instalar la libreria via `npm install --global maytezhou/LIM009-fe-md-links`
 
 ### `MARKDOWN LINKS`
-
+Pseudocodigo o   diagrama de flujo del algoritmo implementado en este proyecto.
 * Diagrama de Flujo de la Funcion Md-links 
  ![md-links-diagram](https://github.com/maytezhou/LIM009-fe-md-links/blob/master/img/mdlinks-diagram.jpg)
  * Diagrama de Flujo de la Funcion cli 
@@ -121,14 +121,26 @@ Broken: 1
 
 
 
-### Implementación del Proyecto
-
-El _parseado_ (análisis) del markdown para extraer los
+### Implementación del Proyecto\
+Para realizar el proyecto se utilizo :
+- NPM  
+-Node js
+-Jest [jest](https://jestjs.io/docs/en/asynchronous)  
+-Fetch- Mock [fetch-mock](http://www.wheresrhys.co.uk/fetch-mock/)
+[fetch-mock-2](https://github.com/wheresrhys/fetch-mock) 
+ -Node-fetch [node-fetch](https://www.npmjs.com/package/node-fetch)
+-Babel [babel](https://babeljs.io/docs/en/configuration)
+[babel-2]( https://babeljs.io/docs/en/babel-polyfill#usage-in-node-browserify-webpack)
+ 
+-El _parseado_ (análisis) del markdown para extraer los
 links se planteo de la siguiente manera :
 
 - Usando un _custom renderer_ de [marked](https://github.com/markedjs/marked)
-  (`new marked.Renderer()`).
-###   Recursos Utilizados:
+  (`new marked.Renderer()`)
+   [marked-2](https://marked.js.org/#/USING_ADVANCED.md#options)
+   [marked-3](https://marked.js.org/#/README.md#installation)
+   [marked-4](https://marked.js.org/#/USING_PRO.md#renderer)
+###  Otros recursos utilizados:
 
 - [Acerca de Node.js - Documentación oficial](https://nodejs.org/es/about/)
 - [Node.js file system - Documentación oficial](https://nodejs.org/api/fs.html)
