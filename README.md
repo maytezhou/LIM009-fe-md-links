@@ -1,11 +1,10 @@
-# Markdown Links
+# `MARKDOWN LINKS`
 Md-links es una libreria que permite analizar archivos que tengan formato markdown .md,a partir de la ruta ingresada ya sea un archivo o un directorio.
 La libreria te retorna informacion de  los links que va encontrando en cada archivo.La informacion proporcionada depende de las opciones ingresadas ya sea --stats , --validate  , ambas o ninguna.
 
 - Instalar la libreria via `npm install --global maytezhou/LIM009-fe-md-links`
 
-### `MARKDOWN LINKS`
-Pseudocodigo o   diagrama de flujo del algoritmo implementado en este proyecto.
+### Pseudocodigo o   diagrama de flujo del algoritmo implementado en este proyecto.
 * Diagrama de Flujo de la Funcion Md-links 
  ![md-links-diagram](https://github.com/maytezhou/LIM009-fe-md-links/blob/master/img/mdlinks-diagram.jpg)
  * Diagrama de Flujo de la Funcion cli 
