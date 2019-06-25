@@ -125,21 +125,25 @@ Broken: 1
 Para realizar el proyecto se utilizo :
 - NPM  
 -Node js
--Jest [jest](https://jestjs.io/docs/en/asynchronous)  
--Fetch- Mock [fetch-mock](http://www.wheresrhys.co.uk/fetch-mock/)
-[fetch-mock-2](https://github.com/wheresrhys/fetch-mock) 
- -Node-fetch [node-fetch](https://www.npmjs.com/package/node-fetch)
--Babel [babel](https://babeljs.io/docs/en/configuration)
-[babel-2]( https://babeljs.io/docs/en/babel-polyfill#usage-in-node-browserify-webpack)
+-Jest:
+[jest](https://jestjs.io/docs/en/asynchronous)  
+-Fetch- Mock :
+[fetch-mock](http://www.wheresrhys.co.uk/fetch-mock/)
+[](https://github.com/wheresrhys/fetch-mock) 
+ -Node-fetch :
+[node-fetch](https://www.npmjs.com/package/node-fetch)
+-Babel:
+[babel](https://babeljs.io/docs/en/configuration)
+[]( https://babeljs.io/docs/en/babel-polyfill#usage-in-node-browserify-webpack)
  
 -El _parseado_ (análisis) del markdown para extraer los
 links se planteo de la siguiente manera :
 
 - Usando un _custom renderer_ de [marked](https://github.com/markedjs/marked)
   (`new marked.Renderer()`)
-   [marked-2](https://marked.js.org/#/USING_ADVANCED.md#options)
-   [marked-3](https://marked.js.org/#/README.md#installation)
-   [marked-4](https://marked.js.org/#/USING_PRO.md#renderer)
+   [](https://marked.js.org/#/USING_ADVANCED.md#options)
+   [](https://marked.js.org/#/README.md#installation)
+   [](https://marked.js.org/#/USING_PRO.md#renderer)
 ###  Otros recursos utilizados:
 
 - [Acerca de Node.js - Documentación oficial](https://nodejs.org/es/about/)
