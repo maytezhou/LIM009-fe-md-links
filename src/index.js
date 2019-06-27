@@ -25,11 +25,11 @@ import {
 export const gettingArrOfMarkdownFiles = (path2) => {
     let arrOfMarkdownFilesPath = [];
     const absolutePath = gettingAbsolutePath(path2);
-    if (gettingFsStatObject(absolutePath).isFile() === true) { // si es un archivo
+    if (gettingFsStatObject(absolutePath).isFile()) { // si es un archivo
         const markdownFilePath = verifyingIfisAMarkdownFile(absolutePath); //verificar que sea un archivo markdown
         arrOfMarkdownFilesPath.push(markdownFilePath); //  guardar el archivo markdown
     }
-    if (gettingFsStatObject(absolutePath).isDirectory() === true) { // si es una carpeta 
+    if (gettingFsStatObject(absolutePath).isDirectory()) { // si es una carpeta 
         const arrOfFilesOrDirsInsideADir = readDir(absolutePath); // que lea  la carpeta  
         arrOfFilesOrDirsInsideADir.forEach((filesOrDirs) => { // que  obtenga los elementos de la carpeta 
             const newPathAbsolute = absolutePath + '/' + filesOrDirs; // que  obtenga la ruta absoluta de cada uno de los elementos
@@ -53,20 +53,20 @@ export const gettingArrObjOfMdLinks = (arrPaths) => {
     return arrObj;
 };
 
-export const gettingStatsOfUrl = (arrObj, options) => {
+export const gettingStatsOfUrl = (arrObj) => {
     const newArrObj = arrObj.map((obj) => {
-        try {
-            return fetch(obj.href).then((response) => {
-                obj.status = response.status;
-                obj.ok = response.statusText;
-
-                return obj;
-            })
-        } catch (e) {
+        return fetch(obj.href).then((response) => {
+            const newObj = {...obj,
+                status: response.status,
+                ok: response.statusText,
+            }
+            return newObj;
+        }).catch((e) => {
             obj.status = e.message
             obj.ok = 'fail'
             return obj
-        }
+
+        })
     });
     return Promise.all(newArrObj);
 };
@@ -84,17 +84,13 @@ export const mdLinks = (path, obj) => {
 };
 
 export const gettingUniqueLinks = (arrObj) => {
-    let contador = 0;
+
     const arrOfHrefUniques = [];
-    arrObj.forEach((obj) => {
-        if (arrOfHrefUniques.indexOf(obj.href) == -1) {
-            arrOfHrefUniques.push(obj.href)
-        }
+    const newArrObj = arrObj.filter((obj) => {
+        return arrOfHrefUniques.indexOf(obj.href) == -1;
     })
-    arrOfHrefUniques.forEach((href) => {
-        contador++
-    })
-    return contador
+    const numberOfUniqueLinks = newArrObj.length;
+    return numberOfUniqueLinks;
 };
 
 export const gettingBrokenLinks = (arrObj) => {

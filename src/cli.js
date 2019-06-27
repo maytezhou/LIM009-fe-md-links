@@ -6,30 +6,20 @@ import { gettingBrokenLinks } from './index.js';
 import { gettingTotalLinks } from './index.js';
 const command = process.argv;
 
-const userCommand = (command1) => {
-    return command1[2];
-};
+const userCommand = (command1) => { return command1[2]; };
 export const pathCommandUser = userCommand(command);
 
-
-
-const options1 = (command) => {
-    return command[3];
-};
+const options1 = (command) => { return command[3]; };
 export const options1User = options1(command);
 
-
-const options2 = (command) => {
-    return command[4];
-};
+const options2 = (command) => { return command[4]; };
 export const options2User = options2(command);
-
 
 const options = {
     validate: false,
 };
 export const cli = (path, string1, string2) => {
-    if (path !== undefined && string1 == '--validate' && string2 == undefined) {
+    if (path !== undefined && string1 === '--validate' && string2 === undefined) {
         options.validate = true
         return mdLinks(path, options).then((response) => {
             const newArrObjLinks = response.map((obj) => {
@@ -39,7 +29,7 @@ export const cli = (path, string1, string2) => {
             return result;
         });
 
-    } else if (path !== undefined && string1 == undefined && string2 == undefined) {
+    } else if (path !== undefined && string1 === undefined && string2 === undefined) {
         options.validate = false;
         return mdLinks(path, options).then((response) => {
             const newArrObjLinks = response.map(obj => {
@@ -48,16 +38,16 @@ export const cli = (path, string1, string2) => {
             const result = newArrObjLinks.toString().replace(/,/g, '\n');
             return result;
         })
-    } else if (path !== undefined && string1 == '--stats' && string2 == undefined) {
+    } else if (path !== undefined && string1 === '--stats' && string2 === undefined) {
         options.validate = false;
         return mdLinks(path, options).then((response) => {
             return `Total:${gettingTotalLinks(response)},Unique:${gettingUniqueLinks(response)}`;
         })
 
-    } else if (path !== undefined && string1 == '--stats' && string2 == '--validate' ||
+    } else if (path !== undefined && string1 === '--stats' && string2 === '--validate' ||
         path !== undefined && string1 == '--validate' && string2 == '--stats'
     ) {
-        options.validate = true;
+        options.validate === true;
         return mdLinks(path, options).then((response) => {
             return `Total:${gettingTotalLinks(response)},Unique:${gettingUniqueLinks(response)},Broken:${gettingBrokenLinks(response)}`;
         })
